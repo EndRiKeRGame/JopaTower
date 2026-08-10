@@ -5,9 +5,12 @@ using UnityEngine;
 /// <summary>
 /// Захват точки рукой.
 /// Наружу торчат только два метода: StartRaising / StopRaising — их дёргает PlayerMovementSystem.
-/// Пока кнопка зажата (StartRaising), рука тянется к точке верхнего предела шарнира.
-/// Если в этот момент коллайдер руки касается GrabPoint — персонаж мгновенно
-/// подтягивается рукой к точке захвата и фиксируется на ней пружинным суставом.
+/// Пока кнопка зажата (StartRaising), рука тянется к точке верхнего предела шарнира
+/// (плечо и кисть двигаются каждый со своей скоростью — так движение выглядит естественнее).
+/// Если в этот момент коллайдер руки касается GrabPoint — персонаж подтягивается
+/// рукой к точке захвата и фиксируется на ней пружинным суставом. Если персонаж уже
+/// держится другой рукой, тело не дёргаем (иначе рвётся первый хват) — рука просто
+/// довисает пружиной.
 /// Пока рука держится, отведение мыши от точки захвата задаёт вектор броска;
 /// на StopRaising персонаж запускается по этому вектору.
 /// </summary>
@@ -18,27 +21,35 @@ public class HandGrip : MonoBehaviour
     [SerializeField] private HandSide _side;
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private Rigidbody2D _bodyRigidbody; // главное тело персонажа
+    [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private StaminaSystem _stamina;
+    [SerializeField] private HandGrip _otherHand; // вторая рука — нужна, чтобы не рвать её хват своим захватом
 
     [Header("Сустав фиксации в точке захвата")]
     [SerializeField] private float _jointFrequency = 4f;
     [SerializeField] private float _jointDamping = 0.6f;
+    [SerializeField] private float _stepBetweenHands = 0.2f;
 
     [Header("Запуск при отпускании")]
     [SerializeField] private float _launchForceMultiplier = 6f;
     [SerializeField] private float _maxLaunchDistance = 4f;
+    [SerializeField] private float _twoHandLaunchForceMultiplier = 4f; // отдельная сила для броска двумя руками
+    [SerializeField] private float _twoHandMaxLaunchDistance = 4f;
+    [SerializeField] private float _launchLockDuration = 0.4f; // окно, пока PlayerMovement не гасит боковой импульс броска
 
     [Header("Расход стамины")]
     [SerializeField] private float _staminaDrainPerSecond = 12f;
     [SerializeField] private float _staminaDrainUnderLoadMultiplier = 1.8f;
     [SerializeField] private float _loadForceThreshold = 5f;
 
-    [Header("Подъём руки (мотор шарниров)")]
+    [Header("Подъём руки (мотор шарниров, у плеча и кисти — своя скорость)")]
     [SerializeField] private HingeJoint2D _armHinge;
     [SerializeField] private HingeJoint2D _handHinge;
     [SerializeField] private bool _raiseTowardUpperLimit = true;
-    [SerializeField] private float _raiseMotorSpeed = 400f;
-    [SerializeField] private float _raiseMotorForce = 200f;
+    [SerializeField] private float _armMotorSpeed = 400f;
+    [SerializeField] private float _armMotorForce = 200f;
+    [SerializeField] private float _handMotorSpeed = 250f;
+    [SerializeField] private float _handMotorForce = 150f;
 
     [Header("Визуал")]
     [SerializeField] private SpriteRenderer _handSpriteRenderer;
@@ -50,12 +61,15 @@ public class HandGrip : MonoBehaviour
     private Rigidbody2D _rb;
     private SpringJoint2D _joint;
     private Vector3 _grabWorldPosition;
+    private Vector3 _grabWorldPositionForHand;
     private bool _isGripping;
     private bool _buttonHeld;
+    private bool _gripInvolvedBothHands;
 
     private readonly List<Transform> _touchingPoints = new List<Transform>();
 
     public bool IsGripping => _isGripping;
+    public Vector3 LastGrabPosition => _grabWorldPositionForHand;
 
     void Awake()
     {
@@ -70,15 +84,19 @@ public class HandGrip : MonoBehaviour
 
     void Update()
     {
+        // Стамина общая на персонажа — считаем "отдыхом" только если НИ одна рука не держится,
+        // иначе при независимых Update() рук значение могло перезаписываться то в true, то в false.
+        bool anyHandGripping = _isGripping || (_otherHand != null && _otherHand.IsGripping);
+        _stamina.isResting = !anyHandGripping;
+
         if (_isGripping)
         {
-            _stamina.isResting = false;
             DrainStamina();
             UpdateAimLine();
         }
-        else
+        else if (_buttonHeld)
         {
-            _stamina.isResting = true;
+            TryGrabIfTouching();
         }
     }
 
@@ -88,9 +106,11 @@ public class HandGrip : MonoBehaviour
     {
         _buttonHeld = true;
 
-        float speed = _raiseTowardUpperLimit ? Mathf.Abs(_raiseMotorSpeed) : -Mathf.Abs(_raiseMotorSpeed);
-        SetMotor(_armHinge, speed, _raiseMotorForce, true);
-        // SetMotor(_handHinge, speed, _raiseMotorForce, true);
+        float armSpeed = _raiseTowardUpperLimit ? Mathf.Abs(_armMotorSpeed) : -Mathf.Abs(_armMotorSpeed);
+        float handSpeed = _raiseTowardUpperLimit ? Mathf.Abs(_handMotorSpeed) : -Mathf.Abs(_handMotorSpeed);
+
+        SetMotor(_armHinge, armSpeed, _armMotorForce, true);
+        SetMotor(_handHinge, handSpeed, _handMotorForce, true);
 
         TryGrabIfTouching();
     }
@@ -99,24 +119,30 @@ public class HandGrip : MonoBehaviour
     {
         _buttonHeld = false;
         SetMotor(_armHinge, 0f, 0f, false);
-        // SetMotor(_handHinge, 0f, 0f, false);
+        SetMotor(_handHinge, 0f, 0f, false);
 
-        if (_isGripping)
+        if (!_isGripping) return;
+
+        bool otherStillGripping = _otherHand != null && _otherHand.IsGripping;
+        if (otherStillGripping)
         {
-            ReleaseAndLaunch();
+            // другая рука ещё держится — бросок делает только та рука, что отпускается последней,
+            // иначе на двуручном хвате мы получаем два импульса вместо одного
+            ReleaseGrip();
+            return;
         }
+
+        ReleaseAndLaunch();
     }
 
-    // ---------- Захват: мгновенное подтягивание к точке ----------
+    // ---------- Захват: подтягивание к точке ----------
 
     void TryGrabIfTouching()
     {
         if (_isGripping) return;
         if (_stamina != null && _stamina.IsExhausted) return;
-        
+
         Transform point = GetNearestTouchingPoint();
-        
-        Debug.Log($"Point {point}");
         if (point == null) return;
 
         Grab(point);
@@ -125,12 +151,35 @@ public class HandGrip : MonoBehaviour
     void Grab(Transform point)
     {
         _grabWorldPosition = point.position;
+        _grabWorldPositionForHand = point.position;
+        if (_side == HandSide.Left)
+        {
+            _grabWorldPositionForHand += Vector3.left * _stepBetweenHands;
+        }
+        else
+        {
+            _grabWorldPositionForHand -= Vector3.left * _stepBetweenHands;
+        }
+        
+        _gripInvolvedBothHands = false;
 
-        // мгновенно подтягиваем персонажа: рука встаёт точно в точку захвата,
-        // тело сдвигается на ту же дельту вслед за рукой
-        Vector2 delta = (Vector2)point.position - _rb.position;
-        if (_bodyRigidbody != null) _bodyRigidbody.position += delta;
-        _rb.position = point.position;
+        bool otherHandGripping = _otherHand != null && _otherHand.IsGripping;
+
+        if (otherHandGripping)
+        {
+            // персонаж уже держится другой рукой — тело не дёргаем (иначе рвём первый хват),
+            // рука сама подтянется пружиной; помечаем обе руки как двуручный хват для броска
+            _gripInvolvedBothHands = true;
+            _otherHand._gripInvolvedBothHands = true;
+        }
+        else
+        {
+            // мгновенно подтягиваем персонажа: рука встаёт точно в точку захвата,
+            // тело сдвигается на ту же дельту вслед за рукой
+            Vector2 delta = (Vector2)point.position - _rb.position;
+            if (_bodyRigidbody != null) _bodyRigidbody.position += delta;
+            _rb.position = _grabWorldPositionForHand;
+        }
 
         CreateJoint();
         _isGripping = true;
@@ -144,7 +193,7 @@ public class HandGrip : MonoBehaviour
     {
         _joint = gameObject.AddComponent<SpringJoint2D>();
         _joint.autoConfigureConnectedAnchor = false;
-        _joint.connectedAnchor = _grabWorldPosition;
+        _joint.connectedAnchor = _grabWorldPositionForHand;
         _joint.frequency = _jointFrequency;
         _joint.dampingRatio = _jointDamping;
         _joint.distance = 0f;
@@ -165,15 +214,38 @@ public class HandGrip : MonoBehaviour
     {
         Vector3 mouseWorld = GetMouseWorldPosition();
 
-        Vector2 pullVector = (Vector2)(_grabWorldPosition - mouseWorld);
-        float distance = Mathf.Min(pullVector.magnitude, _maxLaunchDistance);
+        Vector3 referencePoint = _grabWorldPosition;
+        float forceMultiplier = _launchForceMultiplier;
+        float maxDistance = _maxLaunchDistance;
+
+        if (_gripInvolvedBothHands && _otherHand != null)
+        {
+            // двуручный хват — точка отсчёта посередине между обеими руками,
+            // и отдельные параметры силы/дальности броска
+            referencePoint = (_grabWorldPosition + _otherHand.LastGrabPosition) * 0.5f;
+            forceMultiplier = _twoHandLaunchForceMultiplier;
+            maxDistance = _twoHandMaxLaunchDistance;
+        }
+
+        Vector2 pullVector = (Vector2)(referencePoint - mouseWorld);
+        float distance = Mathf.Min(pullVector.magnitude, maxDistance);
 
         if (_bodyRigidbody != null && distance > 0.1f)
         {
             Vector2 launchDirection = pullVector.normalized;
-            _bodyRigidbody.AddForce(launchDirection * distance * _launchForceMultiplier, ForceMode2D.Impulse);
+
+            // Присваиваем скорость напрямую, а не AddForce(Impulse): в момент отпускания
+            // рука ещё физически часть суставной цепочки (лимиты ±60–70° на плече/кисти),
+            // и решение констрейнтов в этом же физическом шаге может гасить боковую
+            // составляющую сильнее вертикальной — в зависимости от того, у какого предела
+            // сейчас находится плечо/кисть. Прямое присвоение скорости даёт одинаково
+            // предсказуемый бросок в любом направлении.
+            _bodyRigidbody.linearVelocity = launchDirection * (distance * forceMultiplier);
+
+            if (_playerMovement != null) _playerMovement.NotifyLaunched(_launchLockDuration);
         }
 
+        _gripInvolvedBothHands = false;
         ReleaseGrip();
     }
 
@@ -182,8 +254,6 @@ public class HandGrip : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<GrabPoint>() == null) return;
-        
-        Debug.Log("Enter trigger");
 
         if (!_touchingPoints.Contains(other.transform))
             _touchingPoints.Add(other.transform);
@@ -194,8 +264,6 @@ public class HandGrip : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
         _touchingPoints.Remove(other.transform);
-        
-        Debug.Log("Exit trigger");
     }
 
     Transform GetNearestTouchingPoint()

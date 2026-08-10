@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3822756809069369333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -1.518, y: 0.788, z: 0.00035690365}
+  m_LocalPosition: {x: -1.15, y: 0.788, z: 0.00035690365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -78,8 +78,8 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: -1.1138434, y: -0.003936183}
-  m_ConnectedAnchor: {x: -0.40415657, y: 0.7919363}
+  m_Anchor: {x: -0.75176436, y: -0.0012553086}
+  m_ConnectedAnchor: {x: -0.39823562, y: 0.7892554}
   m_UseConnectedAnchor: 1
   m_UseMotor: 0
   m_Motor:
@@ -87,7 +87,7 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -70
+    m_LowerAngle: -50
     m_UpperAngle: 70
 --- !u!212 &7064893046972367911
 SpriteRenderer:
@@ -143,7 +143,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 2, y: 0.4}
+  m_Size: {x: 1.3, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -183,8 +183,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0071506808, y: -0.008210845}
-  m_Size: {x: 2.04042, y: 0.38518363}
+  m_Offset: {x: -0.0063927174, y: -0.00821084}
+  m_Size: {x: 1.3731195, y: 0.38519168}
   m_Direction: 1
 --- !u!1 &5080076916909997527
 GameObject:
@@ -215,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 5080076916909997527}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.498, y: 0.804, z: 0.00035690365}
+  m_LocalPosition: {x: 1.166, y: 0.804, z: 0.00035690365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -264,8 +264,8 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: -1.1138434, y: -0.003936183}
-  m_ConnectedAnchor: {x: 0.38415658, y: 0.80006385}
+  m_Anchor: {x: -0.7767942, y: -0.0013485551}
+  m_ConnectedAnchor: {x: 0.3892058, y: 0.80265146}
   m_UseConnectedAnchor: 1
   m_UseMotor: 0
   m_Motor:
@@ -274,7 +274,7 @@ HingeJoint2D:
   m_UseLimits: 1
   m_AngleLimits:
     m_LowerAngle: -70
-    m_UpperAngle: 70
+    m_UpperAngle: 50
 --- !u!212 &1051549379358060746
 SpriteRenderer:
   serializedVersion: 3
@@ -329,7 +329,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 2, y: 0.4}
+  m_Size: {x: 1.3, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -369,8 +369,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0071506808, y: -0.008210845}
-  m_Size: {x: 2.04042, y: 0.38518363}
+  m_Offset: {x: -0.010430338, y: -0.008210838}
+  m_Size: {x: 1.3262761, y: 0.38519216}
   m_Direction: 1
 --- !u!1 &6949431512883595282
 GameObject:
@@ -403,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 6949431512883595282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.275, y: -0.013, z: 0}
+  m_LocalPosition: {x: 0.917, y: -0.013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,7 +549,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.28880104, y: 0.010664811}
-  m_ConnectedAnchor: {x: 0.986199, y: -0.0023353365}
+  m_ConnectedAnchor: {x: 0.62819886, y: -0.0023353053}
   m_UseConnectedAnchor: 1
   m_UseMotor: 0
   m_Motor:
@@ -574,19 +574,26 @@ MonoBehaviour:
   _side: 0
   _mainCamera: {fileID: 0}
   _bodyRigidbody: {fileID: 7463869402011527185}
+  _playerMovement: {fileID: 0}
   _stamina: {fileID: 6876213229405957967}
+  _otherHand: {fileID: 0}
   _jointFrequency: 4
   _jointDamping: 0.6
   _launchForceMultiplier: 6
   _maxLaunchDistance: 4
+  _twoHandLaunchForceMultiplier: 4
+  _twoHandMaxLaunchDistance: 4
+  _launchLockDuration: 0.4
   _staminaDrainPerSecond: 12
   _staminaDrainUnderLoadMultiplier: 1.8
   _loadForceThreshold: 5
   _armHinge: {fileID: 6025724628356382809}
   _handHinge: {fileID: 50392802371868681}
   _raiseTowardUpperLimit: 1
-  _raiseMotorSpeed: 400
-  _raiseMotorForce: 200
+  _armMotorSpeed: 400
+  _armMotorForce: 200
+  _handMotorSpeed: 250
+  _handMotorForce: 150
   _handSpriteRenderer: {fileID: 3306486188280193014}
   _openSprite: {fileID: -3347512954666960836, guid: e9777835ec327834694e713c1689d993, type: 3}
   _grabSprite: {fileID: -3347512954666960836, guid: e9777835ec327834694e713c1689d993, type: 3}
@@ -641,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 7139534645204595164}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.263, y: -0.013, z: 0}
+  m_LocalPosition: {x: 0.922, y: -0.013, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -787,7 +794,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.28880104, y: 0.010664811}
-  m_ConnectedAnchor: {x: 0.9741992, y: -0.0023351908}
+  m_ConnectedAnchor: {x: 0.633199, y: -0.0023351908}
   m_UseConnectedAnchor: 1
   m_UseMotor: 0
   m_Motor:
@@ -812,19 +819,26 @@ MonoBehaviour:
   _side: 1
   _mainCamera: {fileID: 0}
   _bodyRigidbody: {fileID: 7463869402011527185}
+  _playerMovement: {fileID: 0}
   _stamina: {fileID: 1161907973848307337}
+  _otherHand: {fileID: 0}
   _jointFrequency: 4
   _jointDamping: 0.6
   _launchForceMultiplier: 6
   _maxLaunchDistance: 4
+  _twoHandLaunchForceMultiplier: 4
+  _twoHandMaxLaunchDistance: 4
+  _launchLockDuration: 0.4
   _staminaDrainPerSecond: 12
   _staminaDrainUnderLoadMultiplier: 1.8
   _loadForceThreshold: 5
   _armHinge: {fileID: 4408988133535379699}
   _handHinge: {fileID: 8047288558829137844}
   _raiseTowardUpperLimit: 0
-  _raiseMotorSpeed: 400
-  _raiseMotorForce: 200
+  _armMotorSpeed: 400
+  _armMotorForce: 200
+  _handMotorSpeed: 250
+  _handMotorForce: 150
   _handSpriteRenderer: {fileID: 4019864594590271304}
   _openSprite: {fileID: -3347512954666960836, guid: e9777835ec327834694e713c1689d993, type: 3}
   _grabSprite: {fileID: -3347512954666960836, guid: e9777835ec327834694e713c1689d993, type: 3}
@@ -862,6 +876,7 @@ GameObject:
   - component: {fileID: 7095293004470782615}
   - component: {fileID: 9221682746405371437}
   - component: {fileID: 1771881597119564902}
+  - component: {fileID: 8651476099424864945}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1038,6 +1053,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0025041192, y: 0}
-  m_Size: {x: 0.7746361, y: 2}
+  m_Offset: {x: -0.0054305196, y: 0}
+  m_Size: {x: 0.9986633, y: 2}
   m_Direction: 0
+--- !u!114 &8651476099424864945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112118292914906353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e8d7298124e4b399826be2b26eff709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.HealthSystem

@@ -24,18 +24,38 @@ public class PlayerMovement : MonoBehaviour
     
     // TODO: добавить проверку на землю
     private Rigidbody2D _rb;
+    private float _launchLockTimer;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>
+    /// Вызывается извне (HandGrip) в момент броска — на время lockDuration
+    /// AddForce не гасит горизонтальную скорость при отсутствии ввода,
+    /// иначе боковой импульс броска гасится этим же кадром автоторможения.
+    /// </summary>
+    public void NotifyLaunched(float lockDuration)
+    {
+        _launchLockTimer = Mathf.Max(_launchLockTimer, lockDuration);
+    }
+
     public void AddForce(float input)
     {
+        bool isPressingDirection = Mathf.Abs(input) > 0.01f;
+
+        if (_launchLockTimer > 0f)
+        {
+            _launchLockTimer -= Time.fixedDeltaTime;
+
+            // во время окна броска не гасим импульс, если игрок не управляет активно
+            if (!isPressingDirection) return;
+        }
+
         float targetSpeed = input * _moveSpeed;
         float speedDiff = targetSpeed - _rb.linearVelocity.x;
 
-        bool isPressingDirection = Mathf.Abs(input) > 0.01f;
         float accel;
         if (isPressingDirection)
             accel = _groundAcceleration * _airAccelerationCoef;
