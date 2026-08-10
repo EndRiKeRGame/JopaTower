@@ -1,4 +1,5 @@
 using Enums;
+using Player;
 using UnityEngine;
 
 /// <summary>
@@ -9,7 +10,10 @@ using UnityEngine;
 public class PlayerMovementSystem : MonoBehaviour
 {
     [SerializeField]
-    private PlayerMovement _body;
+    private HealthSystem _healthSystem;
+    
+    [SerializeField]
+    private BodyMovement _body;
     
     [SerializeField]
     private HandGrip _leftHand;
@@ -19,6 +23,9 @@ public class PlayerMovementSystem : MonoBehaviour
 
     void Update()
     {
+        if (!_healthSystem.IsAlive)
+            return;
+        
         // upd body pos
         float input = 0f;
         

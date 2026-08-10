@@ -34,6 +34,11 @@ public class DeathFloor : MonoBehaviour
 
         _deathFloor.transform.position += _deathFloor.transform.up * speed;
     }
+
+    public void Setup(Transform target)
+    {
+        _target = target;
+    }
     
     public void StartDeathFloor()
     {

@@ -21,7 +21,7 @@ public class HandGrip : MonoBehaviour
     [SerializeField] private HandSide _side;
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private Rigidbody2D _bodyRigidbody; // главное тело персонажа
-    [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private BodyMovement bodyMovement;
     [SerializeField] private StaminaSystem _stamina;
     [SerializeField] private HandGrip _otherHand; // вторая рука — нужна, чтобы не рвать её хват своим захватом
 
@@ -55,6 +55,7 @@ public class HandGrip : MonoBehaviour
     [SerializeField] private SpriteRenderer _handSpriteRenderer;
     [SerializeField] private Sprite _openSprite;
     [SerializeField] private Sprite _grabSprite;
+    
     [SerializeField] private Transform _grabMarker;   // появляется точно в точке захвата
     [SerializeField] private LineRenderer _aimLine;   // необязательно: линия натяжения броска
 
@@ -93,9 +94,7 @@ public class HandGrip : MonoBehaviour
         {
             DrainStamina();
             UpdateAimLine();
-
-            // --- NEW ---
-            // Если рука ждала вторую — проверяем, можно ли выполнять бросок
+            
             if (_wantsToRelease)
             {
                 bool otherReady = _otherHand == null || !_otherHand.IsGripping || _otherHand._wantsToRelease;
@@ -109,7 +108,7 @@ public class HandGrip : MonoBehaviour
                     ReleaseAndLaunch();
                     // Выключаем моторы, так как рука больше не в захвате
                     SetMotor(_armHinge, 0f, 0f, false);
-                    SetMotor(_handHinge, 0f, 0f, false);
+                    // SetMotor(_handHinge, 0f, 0f, false);
                 }
             }
         }
@@ -117,6 +116,12 @@ public class HandGrip : MonoBehaviour
         {
             TryGrabIfTouching();
         }
+    }
+
+    public void Setup(Transform grabMarker, LineRenderer aimLine)
+    {
+        _grabMarker = grabMarker;
+        _aimLine = aimLine;
     }
 
     // ---------- Публичный API: дёргается извне (PlayerMovementSystem) ----------
@@ -261,7 +266,7 @@ public class HandGrip : MonoBehaviour
         {
             Vector2 launchDirection = pullVector.normalized;
             _bodyRigidbody.linearVelocity = launchDirection * (distance * forceMultiplier);
-            if (_playerMovement != null) _playerMovement.NotifyLaunched(_launchLockDuration);
+            if (bodyMovement != null) bodyMovement.NotifyLaunched(_launchLockDuration);
         }
 
         // _gripInvolvedBothHands обнулится внутри ReleaseGrip
