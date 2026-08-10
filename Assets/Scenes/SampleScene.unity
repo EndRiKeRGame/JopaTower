@@ -4317,7 +4317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 311400998016245887, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _maxLaunchDistance
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 311400998016245887, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: handSpriteRenderer
@@ -4325,15 +4325,15 @@ PrefabInstance:
       objectReference: {fileID: 42196444}
     - target: {fileID: 311400998016245887, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _launchForceMultiplier
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 311400998016245887, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _twoHandMaxLaunchDistance
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 311400998016245887, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _twoHandLaunchForceMultiplier
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 726421793561188618, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: m_CollisionDetection
@@ -4505,7 +4505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8395878423350462850, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _maxLaunchDistance
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8395878423350462850, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: handSpriteRenderer
@@ -4513,15 +4513,15 @@ PrefabInstance:
       objectReference: {fileID: 228923529}
     - target: {fileID: 8395878423350462850, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _launchForceMultiplier
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8395878423350462850, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _twoHandMaxLaunchDistance
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8395878423350462850, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: _twoHandLaunchForceMultiplier
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8953083983589098591, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
       propertyPath: m_ConnectedAnchor.x
