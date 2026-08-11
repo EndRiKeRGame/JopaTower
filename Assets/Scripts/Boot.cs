@@ -6,6 +6,9 @@ namespace DefaultNamespace
     public class Boot : MonoBehaviour
     {
         [SerializeField]
+        private ActTowerGenerator _towerGenerator;
+        
+        [SerializeField]
         private DeathFloor _deathFloor;
         
         [SerializeField]
@@ -30,13 +33,12 @@ namespace DefaultNamespace
 
         }
 
-        // generate tower
-        // spawn player
-
         public void StartGame()
         {
             _cameraFollowUp.enabled = true;
             _deathFloor.enabled = true;
+
+            GenerateTower();
             
             var go = Instantiate(_player, _spawnPoint.position, Quaternion.identity);
             go.Setup(_markTransform, _lineRenderer);
@@ -46,6 +48,11 @@ namespace DefaultNamespace
             
             _deathFloor.Setup(go.transform);
             _deathFloor.StartDeathFloor();
+        }
+        
+        public void GenerateTower()
+        {
+            _towerGenerator.GenerateFullTower();
         }
 
         // wait for player adapt

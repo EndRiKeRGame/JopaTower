@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aafecb9614fb447caec3088014dc5d31, type: 3}
+  m_Name: TowerConfig
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerConfig
+  <Prologue>k__BackingField:
+    transitionStart: {fileID: 5323782815524693122, guid: fa0db4030ba07ba42ade629f001e4fc0, type: 3}
+    poolA:
+    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
+    - {fileID: 5323782815524693122, guid: 78c32ac3b92518a45a609439c5c97958, type: 3}
+    poolB:
+    - {fileID: 5323782815524693122, guid: 979f3135b3a22b84ea55db119a1e9838, type: 3}
+    - {fileID: 5323782815524693122, guid: d5f2290b74cc23a418f8bbac898ff284, type: 3}
+    - {fileID: 5323782815524693122, guid: 0dc56f189aa94d343ac947a0e8cf785c, type: 3}
+    transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
+  <Act1>k__BackingField:
+    transitionStart: {fileID: 5323782815524693122, guid: fa0db4030ba07ba42ade629f001e4fc0, type: 3}
+    poolA:
+    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
+    - {fileID: 5323782815524693122, guid: 78c32ac3b92518a45a609439c5c97958, type: 3}
+    poolB:
+    - {fileID: 5323782815524693122, guid: 979f3135b3a22b84ea55db119a1e9838, type: 3}
+    - {fileID: 5323782815524693122, guid: d5f2290b74cc23a418f8bbac898ff284, type: 3}
+    - {fileID: 5323782815524693122, guid: 0dc56f189aa94d343ac947a0e8cf785c, type: 3}
+    transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
+  <Act2>k__BackingField:
+    transitionStart: {fileID: 5323782815524693122, guid: 5630a8d18bf6d934f9d45f3bc90fd555, type: 3}
+    poolA:
+    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
+    - {fileID: 5323782815524693122, guid: 78c32ac3b92518a45a609439c5c97958, type: 3}
+    poolB:
+    - {fileID: 5323782815524693122, guid: 979f3135b3a22b84ea55db119a1e9838, type: 3}
+    - {fileID: 5323782815524693122, guid: d5f2290b74cc23a418f8bbac898ff284, type: 3}
+    - {fileID: 5323782815524693122, guid: 0dc56f189aa94d343ac947a0e8cf785c, type: 3}
+    transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
+  <Act3>k__BackingField:
+    transitionStart: {fileID: 5323782815524693122, guid: 5630a8d18bf6d934f9d45f3bc90fd555, type: 3}
+    poolA:
+    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
+    - {fileID: 5323782815524693122, guid: 78c32ac3b92518a45a609439c5c97958, type: 3}
+    poolB:
+    - {fileID: 5323782815524693122, guid: 979f3135b3a22b84ea55db119a1e9838, type: 3}
+    - {fileID: 5323782815524693122, guid: d5f2290b74cc23a418f8bbac898ff284, type: 3}
+    - {fileID: 5323782815524693122, guid: 0dc56f189aa94d343ac947a0e8cf785c, type: 3}
+    transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
+  <Finale>k__BackingField:
+    transitionStart: {fileID: 0}
+    poolA: []
+    poolB: []
+    transitionEnd: {fileID: 0}
