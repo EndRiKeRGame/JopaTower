@@ -3,31 +3,22 @@ using UnityEngine;
 
 public class ActTowerGenerator : MonoBehaviour
 {
-    [SerializeField]
-    private TowerConfig _towerConfig;
-
-    [Tooltip("Высота одной секции. Все префабы секций должны быть такой же высоты.")]
-    [SerializeField]
-    private float _sectionHeight = 6f;
-
-    [Tooltip("Сколько секций содержит один акт. Для текущей схемы это 10.")]
-    [SerializeField]
-    private int _sectionsPerAct = 10;
+    private int _nextSpawnIndex;
+    private float _nextSpawnY;
+    private int _lastPlayerSectionIndex = -1;
+    private float _sectionHeight;
     
-    private int nextSpawnIndex;
-    private float nextSpawnY;
-    private int lastPlayerSectionIndex = -1;
-    
-    public void GenerateFullTower()
+    public void GenerateFullTower(TowerConfig config, float sectionHeight, int sectionsPerAct)
     {
         // Сбрасываем внутреннее состояние
-        nextSpawnY = 0f;
-        nextSpawnIndex = 0;
-        lastPlayerSectionIndex = -1;
+        _nextSpawnY = 0f;
+        _nextSpawnIndex = 0;
+        _lastPlayerSectionIndex = -1;
+        _sectionHeight = sectionHeight;
 
-        var act1 = _towerConfig.Act1.GetSectionOrder(_sectionsPerAct);
-        var act2 = _towerConfig.Act2.GetSectionOrder(_sectionsPerAct);
-        var act3 = _towerConfig.Act3.GetSectionOrder(_sectionsPerAct);
+        var act1 = config.Act1.GetSectionOrder(sectionsPerAct);
+        var act2 = config.Act2.GetSectionOrder(sectionsPerAct);
+        var act3 = config.Act3.GetSectionOrder(sectionsPerAct);
         
         foreach (var section in act1)
             SpawnNextSection(section);
@@ -44,15 +35,15 @@ public class ActTowerGenerator : MonoBehaviour
         // Создаём копию префаба на нужной высоте
         GameObject section = Instantiate(
             spawnSection,
-            new Vector3(0f, nextSpawnY, 0f),
+            new Vector3(0f, _nextSpawnY, 0f),
             Quaternion.identity,
             transform
         );
         
-        section.name = $"Section_{nextSpawnIndex:000}_{spawnSection.name}";
+        section.name = $"Section_{_nextSpawnIndex:000}_{spawnSection.name}";
 
         // Переходим к следующей секции
-        nextSpawnY += _sectionHeight;
-        nextSpawnIndex++;
+        _nextSpawnY += _sectionHeight;
+        _nextSpawnIndex++;
     }
 }

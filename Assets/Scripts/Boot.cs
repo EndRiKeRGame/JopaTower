@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace DefaultNamespace
 {
@@ -7,6 +6,12 @@ namespace DefaultNamespace
     {
         [SerializeField]
         private ActTowerGenerator _towerGenerator;
+        
+        [SerializeField]
+        private TowerConfig _towerConfig;
+        
+        [SerializeField]
+        private TowerConfig _backgroundTowerConfig;
         
         [SerializeField]
         private DeathFloor _deathFloor;
@@ -30,7 +35,6 @@ namespace DefaultNamespace
         {
             _cameraFollowUp.enabled = false;
             _deathFloor.enabled = false;
-
         }
 
         public void StartGame()
@@ -52,12 +56,12 @@ namespace DefaultNamespace
         
         public void GenerateTower()
         {
-            _towerGenerator.GenerateFullTower();
+            //_towerGenerator.GenerateFullTower(_backgroundTowerConfig, 28.8f, 2);
+            _towerGenerator.GenerateFullTower(_towerConfig, 5f, 10);
         }
 
         // wait for player adapt
         // dialogue here
-        // start death floor
         // end game when player on last platform
     }
 }
