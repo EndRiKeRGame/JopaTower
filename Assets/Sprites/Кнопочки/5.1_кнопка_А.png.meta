@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c58d1fd190c55f846a4b2ff5b07926e8
+guid: 81662eab16b3e5c4e99f985d30fd68e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2924133584205671164
-    second: "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0"
+      213: -1692583436031350691
+    second: "5.1_\u043A\u043D\u043E\u043F\u043A\u0430_\u0410_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0"
+      name: "5.1_\u043A\u043D\u043E\u043F\u043A\u0430_\u0410_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 5120
-        height: 2880
+        x: 25
+        y: 50
+        width: 840
+        height: 865
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40591a57ff36b67d0800000000000000
-      internalID: -2924133584205671164
+      spriteID: d5824a6255cb288e0800000000000000
+      internalID: -1692583436031350691
       vertices: []
       indices: 
       edges: []
@@ -139,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0": -2924133584205671164
+      "5.1_\u043A\u043D\u043E\u043F\u043A\u0430_\u0410_0": -1692583436031350691
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

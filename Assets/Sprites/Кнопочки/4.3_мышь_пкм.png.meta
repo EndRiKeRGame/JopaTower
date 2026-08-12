@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c58d1fd190c55f846a4b2ff5b07926e8
+guid: 73cd0cd6442c0d949bc732f5d0996268
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2924133584205671164
-    second: "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0"
+      213: 3651204318167148145
+    second: "4.3_\u043C\u044B\u0448\u044C_\u043F\u043A\u043C_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +96,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0"
+      name: "4.3_\u043C\u044B\u0448\u044C_\u043F\u043A\u043C_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 5120
-        height: 2880
+        x: 17
+        y: 20
+        width: 769
+        height: 1266
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40591a57ff36b67d0800000000000000
-      internalID: -2924133584205671164
+      spriteID: 176a9b28bfeaba230800000000000000
+      internalID: 3651204318167148145
       vertices: []
       indices: 
       edges: []
@@ -139,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0": -2924133584205671164
+      "4.3_\u043C\u044B\u0448\u044C_\u043F\u043A\u043C_0": 3651204318167148145
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

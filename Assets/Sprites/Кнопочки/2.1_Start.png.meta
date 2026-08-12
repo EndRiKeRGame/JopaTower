@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: c58d1fd190c55f846a4b2ff5b07926e8
+guid: edf94b91465995248bfd5c7aec195f3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2924133584205671164
-    second: "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0"
+      213: -759316843050345225
+    second: 2.1_Start_0
+  - first:
+      213: 4833920816879885740
+    second: 2.1_Start_1
+  - first:
+      213: -6215784260476650867
+    second: 2.1_Start_2
+  - first:
+      213: -5826268302981498512
+    second: 2.1_Start_3
+  - first:
+      213: -2047139615831334085
+    second: 2.1_Start_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,40 +108,115 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0"
+      name: 2.1_Start_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 5120
-        height: 2880
+        x: 298
+        y: 418
+        width: 428
+        height: 623
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40591a57ff36b67d0800000000000000
-      internalID: -2924133584205671164
+      spriteID: 7fc5302ba5d5675f0800000000000000
+      internalID: -759316843050345225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2.1_Start_1
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 399
+        width: 422
+        height: 641
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caddd7a2f59851340800000000000000
+      internalID: 4833920816879885740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2.1_Start_2
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 415
+        width: 408
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8a33d1d5291db9a0800000000000000
+      internalID: -6215784260476650867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2.1_Start_3
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 426
+        width: 390
+        height: 669
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0797baae8dfe42fa0800000000000000
+      internalID: -5826268302981498512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2.1_Start_4
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 439
+        width: 414
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b336eb89d591793e0800000000000000
+      internalID: -2047139615831334085
       vertices: []
       indices: 
       edges: []
@@ -139,7 +226,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u041A\u0430\u043C\u0443\u0448\u043A\u0438_0": -2924133584205671164
+      2.1_Start_0: -759316843050345225
+      2.1_Start_1: 4833920816879885740
+      2.1_Start_2: -6215784260476650867
+      2.1_Start_3: -5826268302981498512
+      2.1_Start_4: -2047139615831334085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

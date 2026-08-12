@@ -31,6 +31,9 @@ namespace DefaultNamespace
         [SerializeField]
         private LineRenderer _lineRenderer;
 
+        [SerializeField]
+        private int _sectionsPerAct;
+
         private void Awake()
         {
             _cameraFollowUp.enabled = false;
@@ -48,7 +51,7 @@ namespace DefaultNamespace
             go.Setup(_markTransform, _lineRenderer);
             
             _cameraFollowUp.SetTarget(go.transform);
-            _cameraFollowUp.ChangeCameraZoomTo(7, 10f);
+            _cameraFollowUp.ChangeCameraZoomTo(7, 600f);
             
             _deathFloor.Setup(go.transform);
             _deathFloor.StartDeathFloor();
@@ -57,7 +60,7 @@ namespace DefaultNamespace
         public void GenerateTower()
         {
             //_towerGenerator.GenerateFullTower(_backgroundTowerConfig, 28.8f, 2);
-            _towerGenerator.GenerateFullTower(_towerConfig, 5f, 10);
+            _towerGenerator.GenerateFullTower(_towerConfig, 5f, _sectionsPerAct);
         }
 
         // wait for player adapt

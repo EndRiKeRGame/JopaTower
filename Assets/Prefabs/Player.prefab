@@ -768,10 +768,10 @@ MonoBehaviour:
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
-  _launchForceMultiplier: 7
-  _maxLaunchDistance: 7
-  _twoHandLaunchForceMultiplier: 9
-  _twoHandMaxLaunchDistance: 7
+  _launchForceMultiplier: 12
+  _maxLaunchDistance: 12
+  _twoHandLaunchForceMultiplier: 15
+  _twoHandMaxLaunchDistance: 12
   _launchLockDuration: 0.4
   _staminaDrainPerSecond: 12
   _staminaDrainUnderLoadMultiplier: 1.8
@@ -954,10 +954,10 @@ MonoBehaviour:
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
-  _launchForceMultiplier: 7
-  _maxLaunchDistance: 7
-  _twoHandLaunchForceMultiplier: 9
-  _twoHandMaxLaunchDistance: 7
+  _launchForceMultiplier: 12
+  _maxLaunchDistance: 12
+  _twoHandLaunchForceMultiplier: 15
+  _twoHandMaxLaunchDistance: 12
   _launchLockDuration: 0.4
   _staminaDrainPerSecond: 12
   _staminaDrainUnderLoadMultiplier: 1.8
