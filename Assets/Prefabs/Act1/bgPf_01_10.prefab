@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5951201111289515100}
   - component: {fileID: 578426328614934532}
   m_Layer: 0
-  m_Name: bgPf_10
+  m_Name: bgPf_01_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
