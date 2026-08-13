@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 3525724958421276062}
   - component: {fileID: 7288029914563497110}
   m_Layer: 0
-  m_Name: bgPf_05
+  m_Name: bgPf_01_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
