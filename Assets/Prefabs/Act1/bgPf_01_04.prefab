@@ -226,6 +226,14 @@ PrefabInstance:
       value: Tube_platform
       objectReference: {fileID: 0}
     - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
@@ -303,6 +311,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sp_JopaJack
       objectReference: {fileID: 0}
+    - target: {fileID: 6439570717743816848, guid: 11a6241107c676c4c818dbff7277e0d6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439570717743816848, guid: 11a6241107c676c4c818dbff7277e0d6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     - target: {fileID: 8086045536711750530, guid: 11a6241107c676c4c818dbff7277e0d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.98
@@ -366,8 +382,16 @@ PrefabInstance:
       value: Tube_platform (3)
       objectReference: {fileID: 0}
     - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
       objectReference: {fileID: 0}
     - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
       propertyPath: m_MaskInteraction
@@ -466,6 +490,14 @@ PrefabInstance:
     - target: {fileID: 3252208280960812589, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
       propertyPath: m_Offset.y
       value: -0.17813714
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
       objectReference: {fileID: 0}
     - target: {fileID: 3346109404143758510, guid: 20816456dd7d5a64cb99af49d218db1c, type: 3}
       propertyPath: m_MaskInteraction
@@ -585,6 +617,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sp_window_horizontal
       objectReference: {fileID: 0}
+    - target: {fileID: 7013719677015784025, guid: ce2dc8795765c0d44ae43536a6e72fcf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013719677015784025, guid: ce2dc8795765c0d44ae43536a6e72fcf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -659,6 +699,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sp_face
       objectReference: {fileID: 0}
+    - target: {fileID: 4767650480531989515, guid: 943c0dfb81dd61f49b73c6c39308b079, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767650480531989515, guid: 943c0dfb81dd61f49b73c6c39308b079, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -677,6 +725,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4293647557724982573}
     m_Modifications:
+    - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     - target: {fileID: 4772257005325491202, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5673169
@@ -794,6 +850,14 @@ PrefabInstance:
     - target: {fileID: 8901860227801467512, guid: ee18ab4a5483d1343bdb9395060130d5, type: 3}
       propertyPath: m_Name
       value: Sp_window_vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166710228425573305, guid: ee18ab4a5483d1343bdb9395060130d5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166710228425573305, guid: ee18ab4a5483d1343bdb9395060130d5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

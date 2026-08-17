@@ -276,6 +276,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3961318920185558190, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3961318920185558190, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -337,6 +345,14 @@ PrefabInstance:
     - target: {fileID: 7178737537727306789, guid: 7a1306663a659d54ea739a06f6a0685c, type: 3}
       propertyPath: m_Name
       value: Sp_crack1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092910438584586999, guid: 7a1306663a659d54ea739a06f6a0685c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092910438584586999, guid: 7a1306663a659d54ea739a06f6a0685c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -400,6 +416,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sp_face
       objectReference: {fileID: 0}
+    - target: {fileID: 4767650480531989515, guid: 943c0dfb81dd61f49b73c6c39308b079, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767650480531989515, guid: 943c0dfb81dd61f49b73c6c39308b079, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -458,6 +482,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -10.17
       objectReference: {fileID: 0}
+    - target: {fileID: 5770902805136223673, guid: 6dee8066f17019d4db20b04d114afad1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5770902805136223673, guid: 6dee8066f17019d4db20b04d114afad1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     - target: {fileID: 5904933401926930907, guid: 6dee8066f17019d4db20b04d114afad1, type: 3}
       propertyPath: m_Name
       value: Sp_bricks
@@ -480,6 +512,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5739328620221593311}
     m_Modifications:
+    - target: {fileID: 1630677280743332867, guid: 5f96c3c4831dffa4c99ddfa4b479104c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630677280743332867, guid: 5f96c3c4831dffa4c99ddfa4b479104c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     - target: {fileID: 2850549094802964142, guid: 5f96c3c4831dffa4c99ddfa4b479104c, type: 3}
       propertyPath: m_Name
       value: Sp_run
@@ -542,6 +582,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5739328620221593311}
     m_Modifications:
+    - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     - target: {fileID: 4772257005325491202, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.38941026
@@ -616,6 +664,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5739328620221593311}
     m_Modifications:
+    - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -786482929
+      objectReference: {fileID: 0}
     - target: {fileID: 4772257005325491202, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.30676895
