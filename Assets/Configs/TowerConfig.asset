@@ -13,59 +13,33 @@ MonoBehaviour:
   m_Name: TowerConfig
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerConfig
   <Prologue>k__BackingField:
-    transitionStart: {fileID: 5323782815524693122, guid: fa0db4030ba07ba42ade629f001e4fc0, type: 3}
+    transitionStart: {fileID: 8819183825645748734, guid: 37a4893add964c74498bcce9ed01ea38, type: 3}
     poolA:
-    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
-    - {fileID: 5323782815524693122, guid: 78c32ac3b92518a45a609439c5c97958, type: 3}
-    poolB:
-    - {fileID: 5323782815524693122, guid: 979f3135b3a22b84ea55db119a1e9838, type: 3}
-    - {fileID: 5323782815524693122, guid: d5f2290b74cc23a418f8bbac898ff284, type: 3}
-    - {fileID: 5323782815524693122, guid: 0dc56f189aa94d343ac947a0e8cf785c, type: 3}
-    transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
+    - {fileID: 8819183825645748734, guid: 37a4893add964c74498bcce9ed01ea38, type: 3}
+    - {fileID: 8819183825645748734, guid: ee5bce2bc13f94044bd9ea71cd2c3393, type: 3}
+    - {fileID: 8819183825645748734, guid: 266c26c00cab78444b0066f471df2271, type: 3}
+    poolB: []
+    transitionEnd: {fileID: 8819183825645748734, guid: 266c26c00cab78444b0066f471df2271, type: 3}
   <Act1>k__BackingField:
     transitionStart: {fileID: 5323782815524693122, guid: fa0db4030ba07ba42ade629f001e4fc0, type: 3}
     poolA:
-    - {fileID: 5841507744176482084, guid: 5195042b8ee3994409284d7fc70a739e, type: 3}
-    - {fileID: 1837644631972255369, guid: f9e54a3acd2ec5c4086eae89cb291b35, type: 3}
-    - {fileID: 4932900415341906212, guid: 5fbbc0f8d28dc9a4ebad852d5c66e6c8, type: 3}
-    - {fileID: 5039695375404891145, guid: f9233d4e27b992d4eba039a574735625, type: 3}
-    - {fileID: 2277637318989492411, guid: b144816313cb6a3409a6fc73ab0944f6, type: 3}
+    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
     poolB:
-    - {fileID: 7487847851912412393, guid: d2a544adbb7d64048a69a4c20b5a6402, type: 3}
-    - {fileID: 3759831404766963271, guid: 5a48ff7d669be044d85558a467654d39, type: 3}
-    - {fileID: 2722429353832462341, guid: 5510741398e5cce4a912a9d9e8499962, type: 3}
-    - {fileID: 6886695106963947144, guid: 8ab36dcc761c4ba448fbd055e465054b, type: 3}
-    - {fileID: 793505716250093340, guid: 06e97577ee945ac47b8bdede3f5cd150, type: 3}
+    - {fileID: 5323782815524693122, guid: 979f3135b3a22b84ea55db119a1e9838, type: 3}
     transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
   <Act2>k__BackingField:
-    transitionStart: {fileID: 5323782815524693122, guid: 5630a8d18bf6d934f9d45f3bc90fd555, type: 3}
+    transitionStart: {fileID: 5323782815524693122, guid: 66001f1d3101c1d4e91b78e705eb0491, type: 3}
     poolA:
-    - {fileID: 5323782815524693122, guid: b68d5f38fc12f15449ef17e5a4f0772e, type: 3}
-    - {fileID: 5323782815524693122, guid: 89cfe04e25f7bbc43a8664dcc4fcd37c, type: 3}
-    - {fileID: 5323782815524693122, guid: 3ceb5eb47b23e224f911fda6390870f0, type: 3}
-    - {fileID: 5323782815524693122, guid: 77fb18d094731a345bd16744d178258c, type: 3}
-    - {fileID: 5323782815524693122, guid: 69877f5e2a7fbf649832d27c7c4caec3, type: 3}
+    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
     poolB:
-    - {fileID: 5323782815524693122, guid: a7483b4415f0895498a7b86f821afdb1, type: 3}
-    - {fileID: 5323782815524693122, guid: d822648301be1044fb828acd1cc840b5, type: 3}
-    - {fileID: 5323782815524693122, guid: 21d93ef9a4088cb4ead9c7f661419860, type: 3}
-    - {fileID: 5323782815524693122, guid: 14b5a2824545d1240bb02cc1abe96243, type: 3}
-    - {fileID: 5323782815524693122, guid: d3e1e97db1d0a804f98090adb93c9e99, type: 3}
+    - {fileID: 5323782815524693122, guid: 78c32ac3b92518a45a609439c5c97958, type: 3}
     transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
   <Act3>k__BackingField:
-    transitionStart: {fileID: 5323782815524693122, guid: 5630a8d18bf6d934f9d45f3bc90fd555, type: 3}
+    transitionStart: {fileID: 5323782815524693122, guid: bfe51189c0641a740aa000e4846c83ef, type: 3}
     poolA:
-    - {fileID: 5323782815524693122, guid: 21e5f45b9af77f84694e78d9772dad7d, type: 3}
-    - {fileID: 5323782815524693122, guid: 49ff56681a095a7478865b0be9166b1b, type: 3}
-    - {fileID: 5323782815524693122, guid: 0ef222881501d4d459b01a975b8f13e7, type: 3}
-    - {fileID: 5323782815524693122, guid: 740f12dd7278787428f64b7aa60726f0, type: 3}
-    - {fileID: 5323782815524693122, guid: d1bafc7a106f4e04291d50599e0f3d9c, type: 3}
+    - {fileID: 5323782815524693122, guid: cddb68afa2e66b1448035744ec96e617, type: 3}
     poolB:
-    - {fileID: 5323782815524693122, guid: c5d261977d5f79c4b858554538d3800e, type: 3}
-    - {fileID: 5323782815524693122, guid: adc09311f0958c848af2be623538dedf, type: 3}
-    - {fileID: 5323782815524693122, guid: 02dc149e5094fc6498144176d0ab642b, type: 3}
-    - {fileID: 5323782815524693122, guid: b77b83da6cb05894ba298b36d249457a, type: 3}
-    - {fileID: 5323782815524693122, guid: 2c4f2a3f74c3201478f9b32b3845c60a, type: 3}
+    - {fileID: 5323782815524693122, guid: 979f3135b3a22b84ea55db119a1e9838, type: 3}
     transitionEnd: {fileID: 5323782815524693122, guid: 2826e1b3fa49f5d46bf07a27b4d986ef, type: 3}
   <Finale>k__BackingField:
     transitionStart: {fileID: 0}

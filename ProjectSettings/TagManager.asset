@@ -6,6 +6,11 @@ TagManager:
   tags:
   - DeadZone
   - Platform
+  - Act2
+  - Act3
+  - Act1
+  - Prologue
+  - Finale
   layers:
   - Default
   - TransparentFX
@@ -57,4 +62,6 @@ TagManager:
     locked: 0
   m_RenderingLayers:
   - Default
+  - Level
+  - Env
   m_MigratedRenderPipelines: []

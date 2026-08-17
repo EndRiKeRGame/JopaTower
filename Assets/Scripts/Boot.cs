@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
@@ -32,6 +33,9 @@ namespace DefaultNamespace
         private LineRenderer _lineRenderer;
 
         [SerializeField]
+        private PopUpAnimator _popUpAnimator;
+
+        [SerializeField]
         private int _sectionsPerAct;
 
         private void Awake()
@@ -55,6 +59,8 @@ namespace DefaultNamespace
             
             _deathFloor.Setup(go.transform);
             _deathFloor.StartDeathFloor();
+
+            go.GetComponent<ProgressionSystem>().Init(_deathFloor, _popUpAnimator);
         }
         
         public void GenerateTower()

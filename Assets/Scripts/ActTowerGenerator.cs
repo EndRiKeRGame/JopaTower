@@ -16,9 +16,13 @@ public class ActTowerGenerator : MonoBehaviour
         _lastPlayerSectionIndex = -1;
         _sectionHeight = sectionHeight;
 
+        var prologue = config.Prologue.GetSectionOrderForPrologue();
         var act1 = config.Act1.GetSectionOrder(sectionsPerAct);
         var act2 = config.Act2.GetSectionOrder(sectionsPerAct);
         var act3 = config.Act3.GetSectionOrder(sectionsPerAct);
+        
+        foreach (var section in prologue)
+            SpawnNextSection(section);
         
         foreach (var section in act1)
             SpawnNextSection(section);

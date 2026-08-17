@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4789513812359732375}
   - component: {fileID: 4623807370401982094}
   - component: {fileID: 5945950563415216043}
-  - component: {fileID: 5211822044648264667}
   m_Layer: 0
   m_Name: DeathFloor
   m_TagString: DeadZone
@@ -168,22 +167,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5211822044648264667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796398703632442301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2275bbf9d3686846a0368bee6d77222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _deathFloor: {fileID: 949906879370862346}
-  _target: {fileID: 0}
-  _speed: 0.4
-  _speedUpCoef: 2
-  _isMoving: 0
-  _distance: 20
-  _speedUp: 0

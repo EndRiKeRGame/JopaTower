@@ -429,7 +429,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &6025724628356382809
 HingeJoint2D:
@@ -487,7 +487,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -555,7 +555,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!233 &4408988133535379699
 HingeJoint2D:
@@ -613,7 +613,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -714,7 +714,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -768,13 +768,13 @@ MonoBehaviour:
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
-  _launchForceMultiplier: 12
-  _maxLaunchDistance: 12
-  _twoHandLaunchForceMultiplier: 15
-  _twoHandMaxLaunchDistance: 12
+  _launchForceMultiplier: 9
+  _maxLaunchDistance: 7
+  _twoHandLaunchForceMultiplier: 12
+  _twoHandMaxLaunchDistance: 5
   _launchLockDuration: 0.4
-  _staminaDrainPerSecond: 12
-  _staminaDrainUnderLoadMultiplier: 1.8
+  _staminaDrainPerSecond: 1
+  _staminaDrainUnderLoadMultiplier: 1.5
   _loadForceThreshold: 5
   _armHinge: {fileID: 6025724628356382809}
   _handHinge: {fileID: 50392802371868681}
@@ -800,8 +800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38a057c3939a844b9fe004035b16e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
-  maxStamina: 100
-  regenPerSecond: 20
+  maxStamina: 5
+  regenPerSecond: 1
   isResting: 1
   OnStaminaChanged:
     m_PersistentCalls:
@@ -900,7 +900,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -954,13 +954,13 @@ MonoBehaviour:
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
-  _launchForceMultiplier: 12
-  _maxLaunchDistance: 12
-  _twoHandLaunchForceMultiplier: 15
-  _twoHandMaxLaunchDistance: 12
+  _launchForceMultiplier: 9
+  _maxLaunchDistance: 7
+  _twoHandLaunchForceMultiplier: 12
+  _twoHandMaxLaunchDistance: 5
   _launchLockDuration: 0.4
-  _staminaDrainPerSecond: 12
-  _staminaDrainUnderLoadMultiplier: 1.8
+  _staminaDrainPerSecond: 1
+  _staminaDrainUnderLoadMultiplier: 1.5
   _loadForceThreshold: 5
   _armHinge: {fileID: 4408988133535379699}
   _handHinge: {fileID: 8047288558829137844}
@@ -986,8 +986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38a057c3939a844b9fe004035b16e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
-  maxStamina: 100
-  regenPerSecond: 20
+  maxStamina: 5
+  regenPerSecond: 1
   isResting: 1
   OnStaminaChanged:
     m_PersistentCalls:
@@ -1008,6 +1008,7 @@ GameObject:
   - component: {fileID: 7463869402011527185}
   - component: {fileID: 9221682746405371437}
   - component: {fileID: 1771881597119564902}
+  - component: {fileID: 7301060135594526847}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1074,9 +1075,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da549ce91292da48bc92602b16e60a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  _moveSpeed: 5
-  _groundAcceleration: 40
-  _groundDeceleration: 50
+  _moveSpeed: 7
+  _groundAcceleration: 30
+  _groundDeceleration: 30
   _airAccelerationCoef: 0.25
 --- !u!114 &8651476099424864945
 MonoBehaviour:
@@ -1116,7 +1117,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &9221682746405371437
 SpriteRenderer:
@@ -1215,3 +1216,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0.029002815, y: -0.2577858}
   m_Size: {x: 0.6635125, y: 2.5155654}
   m_Direction: 0
+--- !u!114 &7301060135594526847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112118292914906353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b79144c7664801a2d066400e7010b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.ProgressionSystem
+  _deathFloorStep: 20

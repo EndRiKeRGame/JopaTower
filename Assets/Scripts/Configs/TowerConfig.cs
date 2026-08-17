@@ -24,16 +24,9 @@ namespace DefaultNamespace
     [System.Serializable]
     public class ActConfig
     {
-        [Header("Секция 1 (переход в акт)")]
         public GameObject transitionStart;
-
-        [Header("Секции 2-5 (пул A)")]
         public GameObject[] poolA;
-
-        [Header("Секции 6-9 (пул B)")]
         public GameObject[] poolB;
-
-        [Header("Секция 10 (переход из акта)")]
         public GameObject transitionEnd;
 
         public GameObject[] GetSectionOrder(int num)
@@ -57,6 +50,11 @@ namespace DefaultNamespace
                 sectionOrder[i] = poolB[Random.Range(0, poolB.Length)];
             
             return sectionOrder;
+        }
+        
+        public GameObject[] GetSectionOrderForPrologue()
+        {
+            return poolA;
         }
     }
 }
