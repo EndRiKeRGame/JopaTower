@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7742935116180083763}
   - component: {fileID: 8168177218078952232}
   - component: {fileID: 4969566066015179254}
+  - component: {fileID: 851321565180190171}
   m_Layer: 6
   m_Name: Purple_platform
   m_TagString: Untagged
@@ -167,3 +168,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &851321565180190171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866868976247618175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b561501f786ba7c4a89d0ccc79048e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabPoint
