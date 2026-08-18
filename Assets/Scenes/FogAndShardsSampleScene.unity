@@ -319,6 +319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 36302090}
   - component: {fileID: 36302089}
+  - component: {fileID: 36302091}
   m_Layer: 0
   m_Name: CameraHolder
   m_TagString: Untagged
@@ -359,6 +360,18 @@ Transform:
   - {fileID: 1883879466}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &36302091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36302088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69312a33620a9364e96fe0eac9cffb2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
 --- !u!1 &124359850
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +511,67 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &161783848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 161783850}
+  - component: {fileID: 161783849}
+  m_Layer: 0
+  m_Name: DebrisDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &161783849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161783848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d70c08bf2bdd2f4dacbaa86f61ca413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebrisDirector
+  _player: {fileID: 1864958514753080358, guid: a422aa03e682672498473a6c38e08d5b, type: 3}
+  _towerRoot: {fileID: 0}
+  _shake: {fileID: 519420033}
+  _debrisPrefabs:
+  - {fileID: 1181256883942156096, guid: 7e01477e39b6fea41ab34c3fc82acb21, type: 3}
+  - {fileID: 1168570303572263458, guid: fd86b9f5fca94c343a381f1c1651d31c, type: 3}
+  - {fileID: 8609670944261685234, guid: 35ef24ded0a20d94ba3495d1eb863687, type: 3}
+  - {fileID: 5907673172994085626, guid: c09f881338dcc444b98198cc2de4046c, type: 3}
+  _sectionHeight: 6
+  _actMarker: Act2
+  _manualStartRoom: 11
+  _manualEndRoom: 18
+  _spawnHalfWidth: 3
+  _spawnAbovePlayer: 12
+  _intervalAtActStart: 1
+  _intervalAtActEnd: 1
+  _debugLog: 1
+--- !u!4 &161783850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161783848}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 53.52328, y: 24.77658, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &181541336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1504,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1555,6 +1630,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 36302090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69312a33620a9364e96fe0eac9cffb2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,7 +2178,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1979028556}
   m_HandleRect: {fileID: 1979028555}
   m_Direction: 0
-  m_Value: 0.07906507
+  m_Value: 0.03069115
   m_Size: 0.21202853
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3605,7 +3692,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -491.4673, y: 0}
+  m_AnchoredPosition: {x: -146.30066, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1315903649
@@ -4183,7 +4270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8d7298124e4b399826be2b26eff709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.HealthSystem
-  _health: 3
+  _maxHp: 3
+  _currentHp: 3
 --- !u!114 &1425769966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6211,3 +6299,4 @@ SceneRoots:
   - {fileID: 1132157203}
   - {fileID: 1541392180}
   - {fileID: 356061695}
+  - {fileID: 161783850}

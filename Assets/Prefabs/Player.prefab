@@ -1010,6 +1010,7 @@ GameObject:
   - component: {fileID: 7463869402011527185}
   - component: {fileID: 9221682746405371437}
   - component: {fileID: 1771881597119564902}
+  - component: {fileID: 5347136044552561804}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1243,3 +1244,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.029002815, y: -0.2577858}
   m_Size: {x: 0.6635125, y: 2.5155654}
   m_Direction: 0
+--- !u!114 &5347136044552561804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112118292914906353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fa78f320eeab44ba053f035f0e90ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardHitReceiver
+  _hands:
+  - {fileID: 8395878423350462850}
+  - {fileID: 311400998016245887}
+  _knockbackForce: 6
