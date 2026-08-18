@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8774669172352298416}
   - component: {fileID: 7199774275789009579}
   - component: {fileID: 6216937158675359861}
+  - component: {fileID: 3458552019378656136}
   m_Layer: 6
   m_Name: BarLong_platform
   m_TagString: Untagged
@@ -167,3 +168,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3458552019378656136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4889435120027649020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b561501f786ba7c4a89d0ccc79048e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabPoint

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3644809078308790343}
   - component: {fileID: 7024255652825758456}
   - component: {fileID: 96120366625614422}
-  - component: {fileID: 2604290697925625884}
+  - component: {fileID: -7703124788396359015}
   m_Layer: 6
   m_Name: Dirty_platform
   m_TagString: Untagged
@@ -168,7 +168,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2604290697925625884
+--- !u!114 &-7703124788396359015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

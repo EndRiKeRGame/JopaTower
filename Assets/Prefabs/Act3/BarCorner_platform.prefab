@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5533600943035068177}
   - component: {fileID: 6261150464848965642}
   - component: {fileID: 7154056837669284564}
+  - component: {fileID: 1580137301676309429}
   m_Layer: 6
   m_Name: BarCorner_platform
   m_TagString: Untagged
@@ -167,3 +168,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1580137301676309429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562588588585206109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b561501f786ba7c4a89d0ccc79048e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabPoint

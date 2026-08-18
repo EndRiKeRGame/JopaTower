@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4499759570959933596}
   - component: {fileID: 2620255973171543943}
   - component: {fileID: 1292892677311784281}
+  - component: {fileID: 1234973375232012947}
   m_Layer: 6
   m_Name: Red_platform
   m_TagString: Untagged
@@ -167,3 +168,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1234973375232012947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319046612276694736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b561501f786ba7c4a89d0ccc79048e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrabPoint
