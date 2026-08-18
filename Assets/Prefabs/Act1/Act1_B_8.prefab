@@ -193,6 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4555760597171798097}
+  - component: {fileID: 4916738575639756623}
   m_Layer: 0
   m_Name: Act1_B_8
   m_TagString: Untagged
@@ -227,6 +228,18 @@ Transform:
   - {fileID: 2626246009177122658}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4916738575639756623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080936012106908891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee20d1831a841d994395e8e7b81ce08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerPart
 --- !u!1 &2337824807924295246
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +709,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
       propertyPath: m_SortingOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3644809078308790343, guid: a3278013fa6f9b14fa45e4d565ecd0d0, type: 3}
       propertyPath: m_MaskInteraction

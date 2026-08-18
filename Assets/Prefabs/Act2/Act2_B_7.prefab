@@ -916,6 +916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3597529112422632004}
+  - component: {fileID: -3442225472932831166}
   m_Layer: 0
   m_Name: Act2_B_7
   m_TagString: Untagged
@@ -946,6 +947,18 @@ Transform:
   - {fileID: 2130215731576200566}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3442225472932831166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8759473217316818480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee20d1831a841d994395e8e7b81ce08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerPart
 --- !u!1001 &1681274938242340964
 PrefabInstance:
   m_ObjectHideFlags: 0

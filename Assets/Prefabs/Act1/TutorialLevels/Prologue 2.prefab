@@ -792,6 +792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3806797932120006109}
+  - component: {fileID: 648537883342768459}
   m_Layer: 0
   m_Name: Prologue 2
   m_TagString: Untagged
@@ -824,6 +825,18 @@ Transform:
   - {fileID: 3478621860381496762}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &648537883342768459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819183825645748734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee20d1831a841d994395e8e7b81ce08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerPart
 --- !u!1 &9028821051578816878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1202,22 @@ PrefabInstance:
     - target: {fileID: 2869759005992669032, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230823659081214901, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2590528
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230823659081214901, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7130713
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230823659081214901, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.010566592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3230823659081214901, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.14793679
       objectReference: {fileID: 0}
     - target: {fileID: 3230823659081214901, guid: 83b37b31da9b9d649b1fcc1f7a95f0df, type: 3}
       propertyPath: m_SpriteTilingProperty.drawMode

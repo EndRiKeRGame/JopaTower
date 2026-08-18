@@ -1279,7 +1279,7 @@ Transform:
   m_GameObject: {fileID: 5820970877091684867}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03176239, y: 2.048502, z: 0}
+  m_LocalPosition: {x: -0.02, y: 2.09, z: 0}
   m_LocalScale: {x: 0.32623172, y: 0.2885651, z: 18.487192}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1981,6 +1981,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3806797932120006109}
+  - component: {fileID: 3581444955759854261}
   m_Layer: 0
   m_Name: Prologue 1
   m_TagString: Untagged
@@ -2017,6 +2018,18 @@ Transform:
   - {fileID: 5758826999719059391}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3581444955759854261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8819183825645748734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee20d1831a841d994395e8e7b81ce08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerPart
 --- !u!1 &9014617150253814009
 GameObject:
   m_ObjectHideFlags: 0

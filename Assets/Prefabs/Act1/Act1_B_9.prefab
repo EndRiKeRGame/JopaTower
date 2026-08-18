@@ -131,7 +131,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.028033376, y: 0.06470853}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.92, y: 0, z: 2.11, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.64, y: 3.05}
     newSize: {x: 1, y: 1}
@@ -311,7 +311,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.028033376, y: 0.06470853}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.92, y: 0, z: 2.11, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.64, y: 3.05}
     newSize: {x: 1, y: 1}
@@ -369,6 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 107496037485819964}
+  - component: {fileID: 6737375046935477536}
   m_Layer: 0
   m_Name: Act1_B_9
   m_TagString: Untagged
@@ -397,6 +398,18 @@ Transform:
   - {fileID: 8276943046075992707}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6737375046935477536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3965872071278532932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee20d1831a841d994395e8e7b81ce08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerPart
 --- !u!1 &4118004188694054693
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +541,7 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: -0.028033376, y: 0.06470853}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 1.92, y: 0, z: 2.11, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4.64, y: 3.05}
     newSize: {x: 1, y: 1}

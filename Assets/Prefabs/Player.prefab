@@ -1004,11 +1004,12 @@ GameObject:
   - component: {fileID: 8708774690911462370}
   - component: {fileID: 8934724874644116818}
   - component: {fileID: 7095293004470782615}
-  - component: {fileID: 8651476099424864945}
+  - component: {fileID: 1857161092573330277}
+  - component: {fileID: 7301060135594526847}
+  - component: {fileID: 2777743197346906990}
   - component: {fileID: 7463869402011527185}
   - component: {fileID: 9221682746405371437}
   - component: {fileID: 1771881597119564902}
-  - component: {fileID: 7301060135594526847}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1045,6 +1046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed766db0e254aa5a61d1ad90005a883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Player
+  _bodyHealth: {fileID: 1857161092573330277}
+  _bodyProgression: {fileID: 2777743197346906990}
   _left: {fileID: 8395878423350462850}
   _right: {fileID: 311400998016245887}
 --- !u!114 &8934724874644116818
@@ -1059,10 +1062,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8f7ee8bda140d199f5e9848bd3c917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementSystem
-  _healthSystem: {fileID: 8651476099424864945}
   _body: {fileID: 7095293004470782615}
   _leftHand: {fileID: 8395878423350462850}
   _rightHand: {fileID: 311400998016245887}
+  IsMoveable: 1
 --- !u!114 &7095293004470782615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1079,7 +1082,7 @@ MonoBehaviour:
   _groundAcceleration: 30
   _groundDeceleration: 30
   _airAccelerationCoef: 0.25
---- !u!114 &8651476099424864945
+--- !u!114 &1857161092573330277
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1088,10 +1091,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 9112118292914906353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e8d7298124e4b399826be2b26eff709, type: 3}
+  m_Script: {fileID: 11500000, guid: b853a0ccb6cd441ba89afb7d273ec57e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player.HealthSystem
-  _health: 1
+  m_EditorClassIdentifier: Assembly-CSharp::Player.BodyHealth
+--- !u!114 &7301060135594526847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112118292914906353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b79144c7664801a2d066400e7010b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.ProgressionSystem
+  _deathFloorStep: 20
+--- !u!114 &2777743197346906990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112118292914906353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa75952e65bd4324bc476d3cdfc095ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.BodyProgression
 --- !u!50 &7463869402011527185
 Rigidbody2D:
   serializedVersion: 5
@@ -1216,16 +1243,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0.029002815, y: -0.2577858}
   m_Size: {x: 0.6635125, y: 2.5155654}
   m_Direction: 0
---- !u!114 &7301060135594526847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9112118292914906353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b79144c7664801a2d066400e7010b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player.ProgressionSystem
-  _deathFloorStep: 20

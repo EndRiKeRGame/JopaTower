@@ -11,6 +11,7 @@ namespace Player
         
         private PopUpAnimator _popUpAnimator;
         private DeathFloor _deathFloor;
+        private BodyProgression _bodyProgression;
 
         private bool _prologue = false;
         private bool _act1 = false;
@@ -23,10 +24,20 @@ namespace Player
             _deathFloor = deathFloor;
             _popUpAnimator = popUpAnimator;
         }
-        
-        private void OnTriggerEnter2D(Collider2D other)
+
+        public void UpdateBodyProgression(BodyProgression bodyProgression)
         {
-            switch (other.gameObject.tag)
+            if (_bodyProgression != null)
+                _bodyProgression.OnTriggerEnter -= CheckTrigger;
+            
+            _bodyProgression = bodyProgression;
+            _bodyProgression.OnTriggerEnter += CheckTrigger;
+        }
+        
+        
+        private void CheckTrigger(string triggerName)
+        {
+            switch (triggerName)
             {
                 case nameof(Triggers.Prologue):
                     OnPrologue();
@@ -53,6 +64,15 @@ namespace Player
             }
         }
 
+        public void Restart()
+        {
+            bool _prologue = false;
+            bool _act1 = false;
+            bool _act2 = false;
+            bool _act3 = false;
+            bool _finale = false;
+        }
+
         private void OnPrologue()
         {
             if (_prologue)
@@ -62,7 +82,7 @@ namespace Player
             
             Debug.Log($"Player has prologue: {nameof(Triggers.Prologue)}");
             StopDeathFloorAndSetNewPos();
-            _popUpAnimator.StartAnimation(nameof(Triggers.Prologue));
+            _popUpAnimator.StartAnimation("ПРОЛОГ");
         }
         
         private void OnAct1()
@@ -72,10 +92,10 @@ namespace Player
             
             _act1 = true;
             
-            Debug.Log($"Player has prologue: {nameof(Triggers.Act1)}");
+            Debug.Log($"Player has АКТ 1: {nameof(Triggers.Act1)}");
             StopDeathFloorAndSetNewPos();
             StartDeathFloor();
-            _popUpAnimator.StartAnimation(nameof(Triggers.Act1));
+            _popUpAnimator.StartAnimation("АКТ 1");
         }
         
         private void OnAct2()
@@ -85,10 +105,10 @@ namespace Player
             
             _act2 = true;
             
-            Debug.Log($"Player has prologue: {nameof(Triggers.Act2)}");
+            Debug.Log($"Player has АКТ 2: {nameof(Triggers.Act2)}");
             StopDeathFloorAndSetNewPos();
             StartDeathFloor();
-            _popUpAnimator.StartAnimation(nameof(Triggers.Act2));
+            _popUpAnimator.StartAnimation("АКТ 2");
         }
         
         private void OnAct3()
@@ -98,10 +118,10 @@ namespace Player
             
             _act3 = true;
             
-            Debug.Log($"Player has prologue: {nameof(Triggers.Act3)}");
+            Debug.Log($"Player has АКТ 3: {nameof(Triggers.Act3)}");
             StopDeathFloorAndSetNewPos();
             StartDeathFloor();
-            _popUpAnimator.StartAnimation(nameof(Triggers.Act3));
+            _popUpAnimator.StartAnimation("АКТ 3");
         }
         
         private void OnFinale()
@@ -111,9 +131,9 @@ namespace Player
             
             _finale = true;
             
-            Debug.Log($"Player has prologue: {nameof(Triggers.Finale)}");
+            Debug.Log($"Player has ФИНАЛ: {nameof(Triggers.Finale)}");
             StopDeathFloorAndSetNewPos();
-            _popUpAnimator.StartAnimation(nameof(Triggers.Finale));
+            _popUpAnimator.StartAnimation("????????????");
         }
 
         private void StopDeathFloorAndSetNewPos()

@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     [CreateAssetMenu(fileName = "TowerConfig", menuName = "Configs/TowerConfig", order = 0)]
     public class TowerConfig : ScriptableObject
     {
+        [field: SerializeField]
+        public GameObject WallsPrefab { get; set; }
+        
         [field: SerializeField]
         public ActConfig Prologue { get; private set; }
         
@@ -42,19 +46,43 @@ namespace DefaultNamespace
             sectionOrder[^1] = transitionEnd;
 
             int half = num / 2;
-
-            for (int i = 1; i < half; i++)
-                sectionOrder[i] = poolA[Random.Range(0, poolA.Length)];
+            if (poolA.Length < half || poolB.Length < half)
+            {
+                Debug.Log("poolA or poolB small for half");
+                return null;
+            }
             
-            for (int i = half; i < num - 1; i++)
-                sectionOrder[i] = poolB[Random.Range(0, poolB.Length)];
+            ShuffleArray(poolA);
+            for (int i = 1, j = 0; i < half; i++, j++)
+                sectionOrder[i] = poolA[j];
+            
+            ShuffleArray(poolB);
+            for (int i = half, j = 0; i < num - 1; i++, j++)
+                sectionOrder[i] = poolB[j];
             
             return sectionOrder;
+        }
+        
+        void ShuffleArray(GameObject[] array)
+        {
+            for (int i = array.Length - 1; i > 0; i--)
+            {
+                // Выбираем случайный индекс от 0 до i включительно
+                int randomIndex = Random.Range(0, i + 1);
+        
+                // Меняем местами элементы
+                (array[i], array[randomIndex]) = (array[randomIndex], array[i]);
+            }
         }
         
         public GameObject[] GetSectionOrderForPrologue()
         {
             return poolA;
+        }
+        
+        public GameObject[] GetSectionOrderForFinale()
+        {
+            return new [] {transitionStart};
         }
     }
 }

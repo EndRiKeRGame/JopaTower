@@ -1,5 +1,4 @@
 ﻿using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -7,25 +6,48 @@ namespace Player
     public class HealthSystem : MonoBehaviour
     {
         [SerializeField]
-        private int _health = 3;
+        private int _maxHp = 3;
         
-        public bool IsAlive => _health > 0;
+        [SerializeField]
+        private int _currentHp = 3;
         
-        private void OnTriggerEnter2D(Collider2D other)
+        public bool IsAlive => _currentHp > 0;
+        
+        public event Action OnDeath;
+        
+        private BodyHealth _bodyHealth;
+
+        public void UpdateBodyHealth(BodyHealth bodyHealth)
         {
-            if (_health > 0 && !other.gameObject.CompareTag("DeadZone"))
+            if (_bodyHealth != null)
+                _bodyHealth.OnHit -= TakeDamage;
+            
+            _bodyHealth = bodyHealth;
+            _bodyHealth.OnHit += TakeDamage;
+        }
+        
+        public void TakeDamage()
+        {
+            if (!IsAlive)
                 return;
             
-            _health--;
+            _currentHp--;
 
-            if (_health == 0)
-            {
-                var list = GetComponentsInChildren<HingeJoint2D>();
-                foreach (var item in list)
-                {
-                    item.enabled = false;
-                }
-            }
+            if (_currentHp != 0)
+                return;
+            
+            var list = GetComponentsInChildren<HingeJoint2D>();
+            foreach (var item in list)
+                item.enabled = false;
+                
+            Debug.Log("Dead");
+            OnDeath?.Invoke();
         }
+
+        public void Restart()
+        {
+            _currentHp = _maxHp;
+        }
+        
     }
 }

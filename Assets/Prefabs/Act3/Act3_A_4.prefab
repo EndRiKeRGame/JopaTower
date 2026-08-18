@@ -1004,6 +1004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8589509187338578163}
+  - component: {fileID: -679888704285436831}
   m_Layer: 0
   m_Name: Act3_A_4
   m_TagString: Untagged
@@ -1034,6 +1035,18 @@ Transform:
   - {fileID: 6476310358163783577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-679888704285436831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914397794978053759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee20d1831a841d994395e8e7b81ce08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.TowerPart
 --- !u!1001 &7614948519329650920
 PrefabInstance:
   m_ObjectHideFlags: 0

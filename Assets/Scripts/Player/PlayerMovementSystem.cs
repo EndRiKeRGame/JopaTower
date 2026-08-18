@@ -1,17 +1,8 @@
 using Enums;
-using Player;
 using UnityEngine;
-
-/// <summary>
-/// Movement Left and Right
-/// Arms Movement
-/// </summary>
 
 public class PlayerMovementSystem : MonoBehaviour
 {
-    [SerializeField]
-    private HealthSystem _healthSystem;
-    
     [SerializeField]
     private BodyMovement _body;
     
@@ -20,13 +11,14 @@ public class PlayerMovementSystem : MonoBehaviour
 
     [SerializeField]
     private HandGrip _rightHand;
+    
+    public bool IsMoveable = true;
 
     void Update()
     {
-        if (!_healthSystem.IsAlive)
+        if (!IsMoveable)
             return;
         
-        // upd body pos
         float input = 0f;
         
         if (Input.GetKey(KeyCode.A))

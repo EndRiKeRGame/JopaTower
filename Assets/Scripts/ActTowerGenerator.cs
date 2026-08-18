@@ -20,21 +20,34 @@ public class ActTowerGenerator : MonoBehaviour
         var act1 = config.Act1.GetSectionOrder(sectionsPerAct);
         var act2 = config.Act2.GetSectionOrder(sectionsPerAct);
         var act3 = config.Act3.GetSectionOrder(sectionsPerAct);
+        var finale = config.Finale.GetSectionOrderForFinale();
         
         foreach (var section in prologue)
-            SpawnNextSection(section);
+            SpawnNextSection(section, config.WallsPrefab);
         
         foreach (var section in act1)
-            SpawnNextSection(section);
+            SpawnNextSection(section, config.WallsPrefab);
         
         foreach (var section in act2)
-            SpawnNextSection(section);
+            SpawnNextSection(section, config.WallsPrefab);
         
         foreach (var section in act3)
-            SpawnNextSection(section);
+            SpawnNextSection(section, config.WallsPrefab);
+        
+        foreach (var section in finale)
+            SpawnNextSection(section, config.WallsPrefab, false);
+    }
+
+    public void DestroyTower()
+    {
+        var list = GetComponentsInChildren<TowerPart>();
+        foreach (var part in list)
+        {
+            Destroy(part.gameObject);
+        }
     }
     
-    public void SpawnNextSection(GameObject spawnSection)
+    public void SpawnNextSection(GameObject spawnSection, GameObject walls, bool needWalls = true)
     {
         // Создаём копию префаба на нужной высоте
         GameObject section = Instantiate(
@@ -43,6 +56,9 @@ public class ActTowerGenerator : MonoBehaviour
             Quaternion.identity,
             transform
         );
+        
+        if (needWalls)
+            Instantiate(walls, new Vector3(0f, _nextSpawnY, 0f), Quaternion.identity, transform);
         
         section.name = $"Section_{_nextSpawnIndex:000}_{spawnSection.name}";
 
