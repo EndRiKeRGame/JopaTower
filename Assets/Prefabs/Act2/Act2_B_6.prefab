@@ -879,14 +879,6 @@ PrefabInstance:
       value: "\u0424\u041E\u041D_\u0410\u041A\u0422_2"
       objectReference: {fileID: 0}
     - target: {fileID: 8115726279633989848, guid: 622537b57058a344e8738b6a5e804f99, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.32694408
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115726279633989848, guid: 622537b57058a344e8738b6a5e804f99, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3471661
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115726279633989848, guid: 622537b57058a344e8738b6a5e804f99, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}

@@ -13,9 +13,13 @@ public class ComicsView : MonoBehaviour
     [SerializeField] private CanvasGroup _fourthPageCG;
     [SerializeField] private CanvasGroup _fivethPageCG;
 
+    [Header("Animation Settings")]
+    [SerializeField] private float _fadeDuration = 0.4f; // Длительность затухания/появления
+
     private CanvasGroup[] _pages;
     private int _currentPageIndex;
     private Action _onComplete;
+    private bool _isTransitioning; // Флаг для блокировки спама кнопкой
 
     private void Awake()
     {
@@ -34,7 +38,7 @@ public class ComicsView : MonoBehaviour
 
         // Изначально скрываем весь комикс и все страницы
         HideComicsInstant();
-        HideAllPages();
+        HideAllPagesInstant();
     }
 
     /// <summary>
@@ -45,24 +49,49 @@ public class ComicsView : MonoBehaviour
     {
         _onComplete = onComplete;
         _currentPageIndex = 0;
+        _isTransitioning = false;
 
         // Показываем весь контейнер комикса
-        Tween.Alpha(_comicsCG, 1f, 0.2f);
+        Tween.Alpha(_comicsCG, 1f, _fadeDuration);
         _comicsCG.interactable = true;
         _comicsCG.blocksRaycasts = true;
 
         // Показываем первую страницу
-        ShowPage(_currentPageIndex);
+        ShowPageInstant(_currentPageIndex);
+        
+        // Предзагружаем вторую страницу позади
+        if (_currentPageIndex + 1 < _pages.Length)
+        {
+            ShowPageBehind(_currentPageIndex + 1);
+        }
     }
 
     private void ShowNextPage()
     {
+        if (_isTransitioning) return; // Блокируем нажатия во время анимации
+
         _currentPageIndex++;
 
         if (_currentPageIndex < _pages.Length)
         {
-            // Показываем следующую страницу
-            ShowPage(_currentPageIndex);
+            // Плавно скрываем текущую страницу
+            _isTransitioning = true;
+            
+            var currentPage = _pages[_currentPageIndex - 1];
+            
+            Tween.Alpha(currentPage, 0f, _fadeDuration)
+                .OnComplete(() =>
+                {
+                    currentPage.interactable = false;
+                    currentPage.blocksRaycasts = false;
+                    _isTransitioning = false;
+                });
+
+            // Предзагружаем следующую страницу позади, если она есть
+            if (_currentPageIndex + 1 < _pages.Length)
+            {
+                ShowPageBehind(_currentPageIndex + 1);
+            }
         }
         else
         {
@@ -73,19 +102,29 @@ public class ComicsView : MonoBehaviour
         }
     }
 
-    private void ShowPage(int index)
+    /// <summary>
+    /// Мгновенно показывает страницу (для первой страницы).
+    /// </summary>
+    private void ShowPageInstant(int index)
     {
-        // Скрываем все страницы
-        HideAllPages();
-
-        // Показываем нужную страницу
         var page = _pages[index];
         page.alpha = 1f;
         page.interactable = true;
         page.blocksRaycasts = true;
     }
 
-    private void HideAllPages()
+    /// <summary>
+    /// Показывает страницу позади текущей (для предзагрузки).
+    /// </summary>
+    private void ShowPageBehind(int index)
+    {
+        var page = _pages[index];
+        page.alpha = 1f; // Страница уже видна, но позади
+        page.interactable = true; // Интерактивность включаем сразу
+        page.blocksRaycasts = true; // Но она будет перекрыта текущей страницей
+    }
+
+    private void HideAllPagesInstant()
     {
         foreach (var page in _pages)
         {
@@ -97,10 +136,17 @@ public class ComicsView : MonoBehaviour
 
     private void HideComics()
     {
-        Tween.Alpha(_comicsCG, 0f, 0.2f);
-        _comicsCG.interactable = false;
-        _comicsCG.blocksRaycasts = false;
-        HideAllPages();
+        _isTransitioning = true;
+        
+        Tween.Alpha(_comicsCG, 0f, _fadeDuration)
+            .OnComplete(() =>
+            {
+                _comicsCG.interactable = false;
+                _comicsCG.blocksRaycasts = false;
+                _isTransitioning = false;
+            });
+        
+        HideAllPagesInstant();
     }
 
     private void HideComicsInstant()

@@ -44,6 +44,9 @@ namespace DefaultNamespace.Ui
         [SerializeField]
         private Button _toMainMenu;
         
+        [SerializeField]
+        private Button _toExit;
+        
         [Header("Animation values")]
         [SerializeField]
         private float _animationDuration = 0.2f;
@@ -77,6 +80,7 @@ namespace DefaultNamespace.Ui
 
             _startButton.onClick.AddListener(StartGame);
             _restartButton.onClick.AddListener(RestartGame);
+            _toExit.onClick.AddListener(() => Application.Quit());
             
             healthSystem.OnDeath += ShowDeathScreen;
             
@@ -146,6 +150,12 @@ namespace DefaultNamespace.Ui
             Tween.Alpha(_canvasGroupSpace, 1f, 0.2f);
         }
         
+        public void ShowSpaceInsta()
+        {
+            _canvasGroupSpace.blocksRaycasts = true;
+            _canvasGroupSpace.alpha = 1f;
+        }
+        
         public void HideSpace()
         {
             _canvasGroupSpace.blocksRaycasts = false;
@@ -154,7 +164,7 @@ namespace DefaultNamespace.Ui
 
         public void ShowFinale()
         {
-            ShowSpace();
+            ShowSpaceInsta();
             HideMainMenu();
             HideDeathScreen();
             _finaleCG.alpha = 1f;
@@ -171,8 +181,8 @@ namespace DefaultNamespace.Ui
             _finaleScene1CG.blocksRaycasts = false;
             _finaleScene2CG.blocksRaycasts = true;
             var seq = Sequence.Create();
-            seq.Insert(0f, Tween.Alpha(_finaleScene1CG, 0f, 0.2f));
-            seq.Insert(0f, Tween.Alpha(_finaleScene2CG, 1f, 0.2f));
+            seq.Insert(0f, Tween.Alpha(_finaleScene1CG, 0f, 0.4f));
+            seq.Insert(0.4f, Tween.Alpha(_finaleScene2CG, 1f, 0.4f));
             seq.ChainCallback(() => _toMainMenu.interactable = true);
         }
 
@@ -180,8 +190,14 @@ namespace DefaultNamespace.Ui
         {
             _finaleCG.blocksRaycasts = false;
             _finaleScene2CG.blocksRaycasts = false;
-            Tween.Alpha(_finaleCG, 0f, 0.2f);
-            StopGame();
+            HideMainMenu();
+            
+            var seq = Sequence.Create();
+            seq.Insert(0f, Tween.Alpha(_finaleCG, 0f, 0.4f));
+            seq.Insert(0.4f, Tween.Alpha(_canvasGroupMainMenu, 1f, 0.4f));
+            
+            _canvasGroupMainMenu.blocksRaycasts = true;
+            OnRestartButtonPressed?.Invoke(false);
             
             _toTitleScreen.interactable = false;
             _toMainMenu.interactable = false;

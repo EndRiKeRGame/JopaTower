@@ -768,10 +768,10 @@ MonoBehaviour:
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
-  _launchForceMultiplier: 9
-  _maxLaunchDistance: 7
-  _twoHandLaunchForceMultiplier: 12
-  _twoHandMaxLaunchDistance: 5
+  _launchForceMultiplier: 50
+  _maxLaunchDistance: 1
+  _twoHandLaunchForceMultiplier: 78
+  _twoHandMaxLaunchDistance: 1
   _launchLockDuration: 0.4
   _staminaDrainPerSecond: 1
   _staminaDrainUnderLoadMultiplier: 1.5
@@ -781,7 +781,7 @@ MonoBehaviour:
   _raiseTowardUpperLimit: 1
   _armMotorSpeed: 500
   _armMotorForce: 500
-  _handMotorSpeed: 250
+  _handMotorSpeed: 500
   _handMotorForce: 150
   _handSpriteRenderer: {fileID: 405213582360862969}
   _openSprite: {fileID: 6512521525456252032, guid: 4fe5c9a7c229a214cae77e71936202a8, type: 3}
@@ -954,10 +954,10 @@ MonoBehaviour:
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
-  _launchForceMultiplier: 9
-  _maxLaunchDistance: 7
-  _twoHandLaunchForceMultiplier: 12
-  _twoHandMaxLaunchDistance: 5
+  _launchForceMultiplier: 50
+  _maxLaunchDistance: 1
+  _twoHandLaunchForceMultiplier: 78
+  _twoHandMaxLaunchDistance: 1
   _launchLockDuration: 0.4
   _staminaDrainPerSecond: 1
   _staminaDrainUnderLoadMultiplier: 1.5
@@ -967,7 +967,7 @@ MonoBehaviour:
   _raiseTowardUpperLimit: 0
   _armMotorSpeed: 500
   _armMotorForce: 500
-  _handMotorSpeed: 250
+  _handMotorSpeed: 500
   _handMotorForce: 150
   _handSpriteRenderer: {fileID: 6694334042778322336}
   _openSprite: {fileID: -5578162833387308892, guid: 2aaeb360adbe8ce4b9d83397e042cbc2, type: 3}

@@ -88,7 +88,8 @@ namespace DefaultNamespace
             _curPlayer.Setup(_markTransform, _lineRenderer);
             
             _cameraFollowUp.SetTarget(_curPlayer.transform);
-            _cameraFollowUp.ChangeCameraZoomTo(7, 600f);
+            _cameraFollowUp.ChangeCameraZoomTo(2.35f, 0.4f);
+            _cameraFollowUp.ChangeCameraZoomTo(7f, 600f);
             
             _deathFloor.Setup(_curPlayer.transform);
             _deathFloor.StopDeathFloor();
@@ -103,6 +104,9 @@ namespace DefaultNamespace
         {
             _towerGenerator.DestroyTower();
             Destroy(_curPlayer.gameObject);
+            
+            _progressionSystem.Restart();
+            _healthSystem.Restart();
             
             _deathFloor.SetDeathFloor(new Vector3(0, -100f, 0));
             
