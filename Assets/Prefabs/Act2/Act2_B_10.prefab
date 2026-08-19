@@ -439,10 +439,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
-  m_SortingOrder: 5
-  m_MaskInteraction: 2
+  m_SortingOrder: 3
+  m_MaskInteraction: 1
   m_Sprite: {fileID: -875466254917759355, guid: 5cdd97f498f4720468f8592b3eecffeb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -531,10 +531,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2733415614760495648, guid: 3fb2c73f7892b4148b440bf61d22a910, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 1894976517653268197}
   - component: {fileID: 7545532818159318508}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Knock-knock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1070,11 +1070,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8115726279633989848, guid: 622537b57058a344e8738b6a5e804f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00051
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8115726279633989848, guid: 622537b57058a344e8738b6a5e804f99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.50052
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8115726279633989848, guid: 622537b57058a344e8738b6a5e804f99, type: 3}
       propertyPath: m_LocalPosition.z

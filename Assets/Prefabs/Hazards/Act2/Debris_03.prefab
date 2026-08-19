@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 9053254811795434166}
   - component: {fileID: 6118197279342446274}
   - component: {fileID: 7912633004210531038}
-  - component: {fileID: 5466610429791716183}
   m_Layer: 0
   m_Name: Debris_03
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8609670944261685234}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.048263345, w: 0.99883467}
   m_LocalPosition: {x: -0.799, y: 1.157, z: 0}
-  m_LocalScale: {x: 0.1085, y: 0.1085, z: 0.1085}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.533}
 --- !u!212 &6118197279342446274
 SpriteRenderer:
   serializedVersion: 3
@@ -245,17 +244,3 @@ PolygonCollider2D:
       - {x: -1.8349999, y: -3.1299999}
       - {x: -1.485, y: -3.02}
   m_UseDelaunayMesh: 1
---- !u!114 &5466610429791716183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609670944261685234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2f8e76d6d308c41ad6e2ce2eeae763, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FallingDebris
-  _fallSpeed: 7
-  _spinSpeed: 140

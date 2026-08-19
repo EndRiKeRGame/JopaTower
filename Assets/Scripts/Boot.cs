@@ -53,6 +53,9 @@ namespace DefaultNamespace
         
         [SerializeField]
         private DialogueTextConfig _dialogueTextConfig;
+        
+        [SerializeField]
+        private ObstacleSpawner _obstacleSpawner;
 
         [SerializeField]
         private int _sectionsPerAct;
@@ -72,7 +75,7 @@ namespace DefaultNamespace
             _healthSystem.OnDeath += StopGame;
             _progressionSystem.OnFinaleDo += _mainMenuView.ShowFinale;
             _progressionSystem.OnFinaleDo += StopGame;
-            _progressionSystem.Init(_deathFloor, _popUpAnimator, _dialogueTextConfig, _dialogueView, _comicsView);
+            _progressionSystem.Init(_deathFloor, _popUpAnimator, _dialogueTextConfig, _dialogueView, _comicsView, _obstacleSpawner);
         }
 
         public void StartGame()

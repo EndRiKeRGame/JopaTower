@@ -79,10 +79,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_MaskInteraction: 1
   m_Sprite: {fileID: 21300000, guid: 14638ab413d8e3c4bb61d0fb5e789e3d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 2660290718844392219}
   - component: {fileID: 1735415537751325142}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: Freddy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,8 +118,8 @@ Transform:
   m_GameObject: {fileID: 2155914155953280405}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.61816466, y: 1.839528, z: 0}
-  m_LocalScale: {x: 0.085267864, y: 0.085267864, z: 0.085267864}
+  m_LocalPosition: {x: 2.6, y: 1.7, z: 0}
+  m_LocalScale: {x: 0.14569719, y: 0.14569719, z: 0.14569719}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3597529112422632004}
@@ -263,10 +263,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_MaskInteraction: 1
   m_Sprite: {fileID: -875466254917759355, guid: 5cdd97f498f4720468f8592b3eecffeb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.33333334}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -305,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 3948034936980075733}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.04856, y: 1.7536299, z: 0}
+  m_LocalPosition: {x: -0.07, y: 2.62, z: 0}
   m_LocalScale: {x: 0.5352, y: 0.4126, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -19,6 +19,7 @@ namespace Player
         private DialogueTextConfig _dialogueText;
         private DialogueView _dialogueView;
         private ComicsView _comicsView;
+        private ObstacleSpawner _obstacleSpawner;
 
         private bool _prologue = false;
         private bool _act1 = false;
@@ -28,13 +29,15 @@ namespace Player
 
         public event Action OnFinaleDo;
 
-        public void Init(DeathFloor deathFloor, PopUpAnimator popUpAnimator, DialogueTextConfig dialogueText, DialogueView dialogueView, ComicsView comicsView)
+        public void Init(DeathFloor deathFloor, PopUpAnimator popUpAnimator, DialogueTextConfig dialogueText,
+            DialogueView dialogueView, ComicsView comicsView, ObstacleSpawner obstacleSpawner)
         {
             _deathFloor = deathFloor;
             _popUpAnimator = popUpAnimator;
             _dialogueText = dialogueText;
             _dialogueView = dialogueView;
             _comicsView = comicsView;
+            _obstacleSpawner = obstacleSpawner;
         }
 
         public void UpdateBodyProgression(BodyProgression bodyProgression)
@@ -116,6 +119,7 @@ namespace Player
             _dialogueView.ShowDialogue(_dialogueText.Act1, () =>
             {
                 StartPlayer();
+                StartDeathFloor();
                 _popUpAnimator.StartAnimation("АКТ 1");
             });
         }
@@ -133,7 +137,9 @@ namespace Player
             _dialogueView.ShowDialogue(_dialogueText.Act2, () =>
             {
                 StartPlayer();
+                StartDeathFloor();
                 _popUpAnimator.StartAnimation("АКТ 2");
+                _obstacleSpawner.StartSpawning();
             });
         }
         
@@ -147,10 +153,13 @@ namespace Player
             Debug.Log($"Player has АКТ 3: {nameof(Triggers.Act3)}");
             StopDeathFloorAndSetNewPos();
             StopPlayer();
+            _obstacleSpawner.StopSpawning();
             _dialogueView.ShowDialogue(_dialogueText.Act3, () =>
             {
                 StartPlayer();
+                StartDeathFloor();
                 _popUpAnimator.StartAnimation("АКТ 3");
+                
             });
         }
         
@@ -180,7 +189,7 @@ namespace Player
         private void StopDeathFloorAndSetNewPos()
         {
             var curPos = _deathFloor.GetDeathFloorPos();
-            curPos.y = transform.position.y - _deathFloorStep;
+            curPos.y = _bodyProgression.transform.position.y - _deathFloorStep;
             _deathFloor.SetDeathFloor(curPos);
         }
         

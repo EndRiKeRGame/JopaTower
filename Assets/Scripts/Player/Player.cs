@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player
 {
@@ -18,6 +20,15 @@ namespace Player
         
         [SerializeField]
         private HandGrip _right;
+        
+        [SerializeField]
+        private AudioSource _audioSource;
+        
+        [SerializeField]
+        private AudioClip[] _audioGenerators;
+        
+        [SerializeField]
+        private float _forceDown = 10f;
 
         private void OnValidate()
         {
@@ -29,6 +40,31 @@ namespace Player
         {
             _left.Setup(grabMarker, aimLine);
             _right.Setup(grabMarker, aimLine);
+
+            _left.OnGripAudio += PlaySound;
+            _right.OnGripAudio += PlaySound;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Crystal"))
+            {
+                _left.ForceReleaseGrip();
+                _right.ForceReleaseGrip(); 
+                var body = GetComponent<Rigidbody2D>();
+                body.AddForce(Vector2.down * _forceDown);
+            }
+        }
+
+        private void PlaySound()
+        {
+            _audioSource.PlayOneShot(_audioGenerators[Random.Range(0, _audioGenerators.Length)]);
+        }
+
+        private void OnDestroy()
+        {
+            _left.OnGripAudio -= PlaySound;
+            _right.OnGripAudio -= PlaySound;
         }
     }
 }

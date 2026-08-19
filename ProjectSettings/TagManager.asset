@@ -11,6 +11,7 @@ TagManager:
   - Act1
   - Prologue
   - Finale
+  - Crystal
   layers:
   - Default
   - TransparentFX

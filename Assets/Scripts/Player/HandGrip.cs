@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Enums;
 using UnityEngine;
@@ -58,6 +59,8 @@ public class HandGrip : MonoBehaviour
     
     [SerializeField] private Transform _grabMarker;   // появляется точно в точке захвата
     [SerializeField] private LineRenderer _aimLine;   // необязательно: линия натяжения броска
+
+    public event Action OnGripAudio;
 
     private Rigidbody2D _rb;
     private SpringJoint2D _joint;
@@ -182,6 +185,8 @@ public class HandGrip : MonoBehaviour
 
         Transform point = GetNearestTouchingPoint();
         if (point == null) return;
+        
+        OnGripAudio?.Invoke();
 
         Grab(point);
     }
@@ -196,7 +201,7 @@ public class HandGrip : MonoBehaviour
             _grabWorldPositionForHand -= Vector3.left * _stepBetweenHands;
 
         _gripInvolvedBothHands = false;
-        _wantsToRelease = false;   // --- NEW --- новый захват – сбрасываем намерение
+        _wantsToRelease = false;
 
         bool otherHandGripping = _otherHand != null && _otherHand.IsGripping;
 
