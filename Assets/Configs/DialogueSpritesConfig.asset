@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcdbaaa3bb448248c13d5194a1b0950, type: 3}
+  m_Name: DialogueSpritesConfig
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.DialogueSpritesConfig
+  <Chill>k__BackingField: {fileID: 21300000, guid: 2c5abfd70d0a10d4ba46f9bdf121921a, type: 3}
+  <Shock>k__BackingField: {fileID: 21300000, guid: 05f80fe31005fdf40a7c19927e7011d6, type: 3}
+  <Sad>k__BackingField: {fileID: 21300000, guid: 7da6eff376109e643802b981f9643fd8, type: 3}
+  <Happy>k__BackingField: {fileID: 21300000, guid: 9aa11996660e35c4db71369df277f82c, type: 3}

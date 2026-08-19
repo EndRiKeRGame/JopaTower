@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace;
+using DefaultNamespace.Ui;
 using Enums;
 using PrimeTween;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace Player
         private PopUpAnimator _popUpAnimator;
         private DeathFloor _deathFloor;
         private BodyProgression _bodyProgression;
+        private DialogueTextConfig _dialogueText;
+        private DialogueView _dialogueView;
 
         private bool _prologue = false;
         private bool _act1 = false;
@@ -23,10 +26,12 @@ namespace Player
 
         public event Action OnFinaleDo;
 
-        public void Init(DeathFloor deathFloor, PopUpAnimator popUpAnimator)
+        public void Init(DeathFloor deathFloor, PopUpAnimator popUpAnimator, DialogueTextConfig dialogueText, DialogueView dialogueView)
         {
             _deathFloor = deathFloor;
             _popUpAnimator = popUpAnimator;
+            _dialogueText = dialogueText;
+            _dialogueView = dialogueView;
         }
 
         public void UpdateBodyProgression(BodyProgression bodyProgression)
@@ -86,7 +91,13 @@ namespace Player
             
             Debug.Log($"Player has prologue: {nameof(Triggers.Prologue)}");
             StopDeathFloorAndSetNewPos();
-            _popUpAnimator.StartAnimation("ПРОЛОГ");
+            StopPlayer();
+            
+            _dialogueView.ShowDialogue(_dialogueText.Prologue, () =>
+            {
+                StartPlayer();
+                _popUpAnimator.StartAnimation("ПРОЛОГ");
+            });
         }
         
         private void OnAct1()
@@ -98,8 +109,12 @@ namespace Player
             
             Debug.Log($"Player has АКТ 1: {nameof(Triggers.Act1)}");
             StopDeathFloorAndSetNewPos();
-            StartDeathFloor();
-            _popUpAnimator.StartAnimation("АКТ 1");
+            StopPlayer();
+            _dialogueView.ShowDialogue(_dialogueText.Act1, () =>
+            {
+                StartPlayer();
+                _popUpAnimator.StartAnimation("АКТ 1");
+            });
         }
         
         private void OnAct2()
@@ -111,8 +126,12 @@ namespace Player
             
             Debug.Log($"Player has АКТ 2: {nameof(Triggers.Act2)}");
             StopDeathFloorAndSetNewPos();
-            StartDeathFloor();
-            _popUpAnimator.StartAnimation("АКТ 2");
+            StopPlayer();
+            _dialogueView.ShowDialogue(_dialogueText.Act2, () =>
+            {
+                StartPlayer();
+                _popUpAnimator.StartAnimation("АКТ 2");
+            });
         }
         
         private void OnAct3()
@@ -124,8 +143,12 @@ namespace Player
             
             Debug.Log($"Player has АКТ 3: {nameof(Triggers.Act3)}");
             StopDeathFloorAndSetNewPos();
-            StartDeathFloor();
-            _popUpAnimator.StartAnimation("АКТ 3");
+            StopPlayer();
+            _dialogueView.ShowDialogue(_dialogueText.Act3, () =>
+            {
+                StartPlayer();
+                _popUpAnimator.StartAnimation("АКТ 3");
+            });
         }
         
         private void OnFinale()
@@ -138,9 +161,14 @@ namespace Player
             Debug.Log($"Player has ФИНАЛ: {nameof(Triggers.Finale)}");
             StopDeathFloorAndSetNewPos();
             _popUpAnimator.StartAnimation("????????????");
-            var seq = Sequence.Create();
-            seq.ChainDelay(5f);
-            seq.ChainCallback(() => OnFinaleDo?.Invoke());
+            StopPlayer();
+            _dialogueView.ShowDialogue(_dialogueText.Finale, () =>
+            {
+                var seq = Sequence.Create();
+                seq.ChainDelay(5f);
+                seq.ChainCallback(() => OnFinaleDo?.Invoke());
+            });
+            
         }
 
         private void StopDeathFloorAndSetNewPos()
@@ -153,6 +181,16 @@ namespace Player
         private void StartDeathFloor()
         {
             _deathFloor.StartDeathFloor();
+        }
+
+        private void StopPlayer()
+        {
+            _bodyProgression.GetComponent<PlayerMovementSystem>().IsMoveable = false;
+        }
+        
+        private void StartPlayer()
+        {
+            _bodyProgression.GetComponent<PlayerMovementSystem>().IsMoveable = true;
         }
     }
 }
