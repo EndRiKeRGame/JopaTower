@@ -1,5 +1,4 @@
-﻿using System;
-using PrimeTween;
+﻿using PrimeTween;
 using TMPro;
 using UnityEngine;
 

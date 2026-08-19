@@ -29,6 +29,21 @@ namespace DefaultNamespace.Ui
         [SerializeField]
         private Image _image;
         
+        [SerializeField]
+        private CanvasGroup _finaleCG;
+        
+        [SerializeField]
+        private CanvasGroup _finaleScene1CG;
+        
+        [SerializeField]
+        private CanvasGroup _finaleScene2CG;
+        
+        [SerializeField]
+        private Button _toTitleScreen;
+        
+        [SerializeField]
+        private Button _toMainMenu;
+        
         [Header("Animation values")]
         [SerializeField]
         private float _animationDuration = 0.2f;
@@ -37,7 +52,7 @@ namespace DefaultNamespace.Ui
         private float _colorChangeAnimationDuration = 10f;
         
         public event Action OnStartButtonPressed;
-        public event Action OnRestartButtonPressed;
+        public event Action<bool> OnRestartButtonPressed;
 
         private Scrollbar _scrollBar;
 
@@ -64,6 +79,12 @@ namespace DefaultNamespace.Ui
             _restartButton.onClick.AddListener(RestartGame);
             
             healthSystem.OnDeath += ShowDeathScreen;
+            
+            _toTitleScreen.onClick.AddListener(ShowTitles);
+            _toMainMenu.onClick.AddListener(HideFinale);
+            
+            _toTitleScreen.interactable = false;
+            _toMainMenu.interactable = false;
         }
 
         private void StartGame()
@@ -75,7 +96,13 @@ namespace DefaultNamespace.Ui
         private void RestartGame()
         {
             HideSpace();
-            OnRestartButtonPressed?.Invoke();
+            OnRestartButtonPressed?.Invoke(true);
+        }
+        
+        private void StopGame()
+        {
+            ShowMainMenu();
+            OnRestartButtonPressed?.Invoke(false);
         }
 
         private void OnDestroy()
@@ -85,6 +112,7 @@ namespace DefaultNamespace.Ui
         
         public void ShowMainMenu()
         {
+            ShowSpace();
             HideDeathScreen();
             
             _canvasGroupMainMenu.blocksRaycasts = true;
@@ -122,6 +150,41 @@ namespace DefaultNamespace.Ui
         {
             _canvasGroupSpace.blocksRaycasts = false;
             Tween.Alpha(_canvasGroupSpace, 0f, 0.2f);
+        }
+
+        public void ShowFinale()
+        {
+            ShowSpace();
+            HideMainMenu();
+            HideDeathScreen();
+            _finaleCG.alpha = 1f;
+            _finaleCG.blocksRaycasts = true;
+            _finaleScene1CG.blocksRaycasts = true;
+            
+            var seq = Sequence.Create();
+            seq.Insert(0f, Tween.Alpha(_finaleScene1CG, 1f, 0.4f));
+            _toTitleScreen.interactable = true;
+        }
+        
+        private void ShowTitles()
+        {
+            _finaleScene1CG.blocksRaycasts = false;
+            _finaleScene2CG.blocksRaycasts = true;
+            var seq = Sequence.Create();
+            seq.Insert(0f, Tween.Alpha(_finaleScene1CG, 0f, 0.2f));
+            seq.Insert(0f, Tween.Alpha(_finaleScene2CG, 1f, 0.2f));
+            seq.ChainCallback(() => _toMainMenu.interactable = true);
+        }
+
+        private void HideFinale()
+        {
+            _finaleCG.blocksRaycasts = false;
+            _finaleScene2CG.blocksRaycasts = false;
+            Tween.Alpha(_finaleCG, 0f, 0.2f);
+            StopGame();
+            
+            _toTitleScreen.interactable = false;
+            _toMainMenu.interactable = false;
         }
     }
 }

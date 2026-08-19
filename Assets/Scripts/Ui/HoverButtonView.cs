@@ -1,8 +1,6 @@
-﻿using System;
-using PrimeTween;
+﻿using PrimeTween;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace DefaultNamespace.Ui
 {

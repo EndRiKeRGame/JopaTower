@@ -1,7 +1,6 @@
 ﻿using DefaultNamespace.Ui;
 using Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
@@ -62,6 +61,8 @@ namespace DefaultNamespace
             _mainMenuView.OnRestartButtonPressed += RestartGame;
             _healthSystem.OnDeath += _progressionSystem.Restart;
             _healthSystem.OnDeath += StopGame;
+            _progressionSystem.OnFinaleDo += _mainMenuView.ShowFinale;
+            _progressionSystem.OnFinaleDo += StopGame;
             _progressionSystem.Init(_deathFloor, _popUpAnimator);
         }
 
@@ -86,14 +87,15 @@ namespace DefaultNamespace
             _healthSystem.Restart();
         }
 
-        public void RestartGame()
+        public void RestartGame(bool isNeedToStart = true)
         {
             _towerGenerator.DestroyTower();
             Destroy(_curPlayer.gameObject);
             
             _deathFloor.SetDeathFloor(new Vector3(0, -100f, 0));
             
-            StartGame();
+            if (isNeedToStart)
+                StartGame();
         }
 
         public void StopGame()

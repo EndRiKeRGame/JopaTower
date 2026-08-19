@@ -1,5 +1,7 @@
-﻿using DefaultNamespace;
+﻿using System;
+using DefaultNamespace;
 using Enums;
+using PrimeTween;
 using UnityEngine;
 
 namespace Player
@@ -18,6 +20,8 @@ namespace Player
         private bool _act2 = false;
         private bool _act3 = false;
         private bool _finale = false;
+
+        public event Action OnFinaleDo;
 
         public void Init(DeathFloor deathFloor, PopUpAnimator popUpAnimator)
         {
@@ -134,6 +138,9 @@ namespace Player
             Debug.Log($"Player has ФИНАЛ: {nameof(Triggers.Finale)}");
             StopDeathFloorAndSetNewPos();
             _popUpAnimator.StartAnimation("????????????");
+            var seq = Sequence.Create();
+            seq.ChainDelay(5f);
+            seq.ChainCallback(() => OnFinaleDo?.Invoke());
         }
 
         private void StopDeathFloorAndSetNewPos()

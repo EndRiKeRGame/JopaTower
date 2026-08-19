@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public class ParallaxLayer : MonoBehaviour
 {
     [SerializeField] private float parallaxFactor = 0.5f; // 0 = статичный фон, 1 = движется как камера
