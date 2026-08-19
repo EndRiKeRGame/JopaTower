@@ -58,7 +58,8 @@ public class HandGrip : MonoBehaviour
     [SerializeField] private Sprite _grabSprite;
     
     [SerializeField] private Transform _grabMarker;   // появляется точно в точке захвата
-    [SerializeField] private LineRenderer _aimLine;   // необязательно: линия натяжения броска
+    [SerializeField] private LineRenderer _aimLine;   // линия натяжения броска
+    [SerializeField] private Transform _arrowHead;    // стрелка на конце линии (опционально)
 
     public event Action OnGripAudio;
 
@@ -111,7 +112,6 @@ public class HandGrip : MonoBehaviour
                     ReleaseAndLaunch();
                     // Выключаем моторы, так как рука больше не в захвате
                     SetMotor(_armHinge, 0f, 0f, false);
-                    // SetMotor(_handHinge, 0f, 0f, false);
                 }
             }
         }
@@ -121,10 +121,11 @@ public class HandGrip : MonoBehaviour
         }
     }
 
-    public void Setup(Transform grabMarker, LineRenderer aimLine)
+    public void Setup(Transform grabMarker, LineRenderer aimLine, Transform arrowHead = null)
     {
         _grabMarker = grabMarker;
         _aimLine = aimLine;
+        _arrowHead = arrowHead;
     }
 
     // ---------- Публичный API: дёргается извне (PlayerMovementSystem) ----------
@@ -149,7 +150,6 @@ public class HandGrip : MonoBehaviour
 
         if (_isGripping)
         {
-            // --- NEW ---
             // Если захват двуручный и вторая рука всё ещё держится — не отцепляемся, а запоминаем намерение
             if (_gripInvolvedBothHands && _otherHand != null && _otherHand.IsGripping)
             {
@@ -274,7 +274,6 @@ public class HandGrip : MonoBehaviour
             if (bodyMovement != null) bodyMovement.NotifyLaunched(_launchLockDuration);
         }
 
-        // _gripInvolvedBothHands обнулится внутри ReleaseGrip
         ReleaseGrip();
     }
 
@@ -360,14 +359,40 @@ public class HandGrip : MonoBehaviour
     {
         if (_aimLine == null) return;
         _aimLine.gameObject.SetActive(visible);
+        
+        if (_arrowHead != null)
+            _arrowHead.gameObject.SetActive(visible);
     }
 
     void UpdateAimLine()
     {
         if (_aimLine == null) return;
 
+        Vector3 mouseWorld = GetMouseWorldPosition();
+        Vector3 pullVector = mouseWorld - _grabWorldPosition;
+        
+        // Ограничиваем длину линии максимальной дистанцией запуска
+        float maxDistance = _gripInvolvedBothHands ? _twoHandMaxLaunchDistance : _maxLaunchDistance;
+        Vector3 clampedVector = Vector3.ClampMagnitude(pullVector, maxDistance);
+        Vector3 lineEnd = _grabWorldPosition + clampedVector;
+
+        // Рисуем линию фиксированной максимальной длины
+        _aimLine.positionCount = 2;
         _aimLine.SetPosition(0, _grabWorldPosition);
-        _aimLine.SetPosition(1, GetMouseWorldPosition());
+        _aimLine.SetPosition(1, lineEnd);
+
+        // Позиционируем стрелку на конце линии
+        if (_arrowHead != null)
+        {
+            _arrowHead.position = lineEnd;
+            
+            // Поворачиваем стрелку в направлении от точки захвата
+            if (pullVector.magnitude > 0.01f)
+            {
+                float angle = Mathf.Atan2(pullVector.y, pullVector.x) * Mathf.Rad2Deg;
+                _arrowHead.rotation = Quaternion.Euler(0, 0, angle);
+            }
+        }
     }
 
     Vector3 GetMouseWorldPosition()

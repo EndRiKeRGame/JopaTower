@@ -770,7 +770,7 @@ MonoBehaviour:
   _stepBetweenHands: 0.2
   _launchForceMultiplier: 50
   _maxLaunchDistance: 1
-  _twoHandLaunchForceMultiplier: 78
+  _twoHandLaunchForceMultiplier: 73
   _twoHandMaxLaunchDistance: 1
   _launchLockDuration: 0.4
   _staminaDrainPerSecond: 1
@@ -956,7 +956,7 @@ MonoBehaviour:
   _stepBetweenHands: 0.2
   _launchForceMultiplier: 50
   _maxLaunchDistance: 1
-  _twoHandLaunchForceMultiplier: 78
+  _twoHandLaunchForceMultiplier: 73
   _twoHandMaxLaunchDistance: 1
   _launchLockDuration: 0.4
   _staminaDrainPerSecond: 1
