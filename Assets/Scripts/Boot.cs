@@ -49,6 +49,9 @@ namespace DefaultNamespace
         private DialogueView _dialogueView;
         
         [SerializeField]
+        private ComicsView _comicsView;
+        
+        [SerializeField]
         private DialogueTextConfig _dialogueTextConfig;
 
         [SerializeField]
@@ -69,7 +72,7 @@ namespace DefaultNamespace
             _healthSystem.OnDeath += StopGame;
             _progressionSystem.OnFinaleDo += _mainMenuView.ShowFinale;
             _progressionSystem.OnFinaleDo += StopGame;
-            _progressionSystem.Init(_deathFloor, _popUpAnimator, _dialogueTextConfig, _dialogueView);
+            _progressionSystem.Init(_deathFloor, _popUpAnimator, _dialogueTextConfig, _dialogueView, _comicsView);
         }
 
         public void StartGame()

@@ -2,6 +2,7 @@
 using DefaultNamespace;
 using DefaultNamespace.Ui;
 using Enums;
+using JetBrains.Annotations;
 using PrimeTween;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Player
         private BodyProgression _bodyProgression;
         private DialogueTextConfig _dialogueText;
         private DialogueView _dialogueView;
+        private ComicsView _comicsView;
 
         private bool _prologue = false;
         private bool _act1 = false;
@@ -26,12 +28,13 @@ namespace Player
 
         public event Action OnFinaleDo;
 
-        public void Init(DeathFloor deathFloor, PopUpAnimator popUpAnimator, DialogueTextConfig dialogueText, DialogueView dialogueView)
+        public void Init(DeathFloor deathFloor, PopUpAnimator popUpAnimator, DialogueTextConfig dialogueText, DialogueView dialogueView, ComicsView comicsView)
         {
             _deathFloor = deathFloor;
             _popUpAnimator = popUpAnimator;
             _dialogueText = dialogueText;
             _dialogueView = dialogueView;
+            _comicsView = comicsView;
         }
 
         public void UpdateBodyProgression(BodyProgression bodyProgression)
@@ -162,11 +165,14 @@ namespace Player
             StopDeathFloorAndSetNewPos();
             _popUpAnimator.StartAnimation("????????????");
             StopPlayer();
-            _dialogueView.ShowDialogue(_dialogueText.Finale, () =>
+            _dialogueView.ShowDialogue(_dialogueText.Finale, 
+            () =>
             {
-                var seq = Sequence.Create();
-                seq.ChainDelay(5f);
-                seq.ChainCallback(() => OnFinaleDo?.Invoke());
+                _comicsView.ShowComics(
+                () =>
+                {
+                    OnFinaleDo?.Invoke();
+                });
             });
             
         }
