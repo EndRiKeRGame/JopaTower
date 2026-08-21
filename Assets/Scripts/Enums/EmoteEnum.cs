@@ -7,6 +7,8 @@ namespace Enums
         Chill = 0,
         Sad, 
         Shock,
-        Happy
+        Happy,
+        
+        Toilet,
     }
 }

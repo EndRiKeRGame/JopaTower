@@ -88,7 +88,7 @@ namespace DefaultNamespace
             _curPlayer.Setup(_markTransform, _lineRenderer);
             
             _cameraFollowUp.SetTarget(_curPlayer.transform);
-            _cameraFollowUp.ChangeCameraZoomTo(2.35f, 0.4f);
+            _cameraFollowUp.ChangeCameraZoomTo(4f, 0.4f);
             _cameraFollowUp.ChangeCameraZoomTo(7f, 600f);
             
             _deathFloor.Setup(_curPlayer.transform);

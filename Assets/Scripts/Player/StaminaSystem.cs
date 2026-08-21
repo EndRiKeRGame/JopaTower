@@ -15,6 +15,8 @@ public class StaminaSystem : MonoBehaviour
 
     [Tooltip("Управляется извне: true = рука отдыхает и восстанавливается")]
     public bool isResting = true;
+    
+    public float StaminaFraction01 => maxStamina > 0f ? CurrentStamina / maxStamina : 0f;
 
     public float CurrentStamina { get; private set; }
 

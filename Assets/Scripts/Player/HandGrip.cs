@@ -60,6 +60,11 @@ public class HandGrip : MonoBehaviour
     [SerializeField] private Transform _grabMarker;   // появляется точно в точке захвата
     [SerializeField] private LineRenderer _aimLine;   // линия натяжения броска
     [SerializeField] private Transform _arrowHead;    // стрелка на конце линии (опционально)
+    
+    [Header("Покраснение руки от усталости")]
+    [SerializeField] private Color _restedHandColor = Color.white;
+    [SerializeField] private Color _exhaustedHandColor = new Color(1f, 0.25f, 0.25f);
+    [SerializeField] private float _colorLerpSpeed = 6f; // сглаживание, чтобы цвет не дёргался покадрово
 
     public event Action OnGripAudio;
 
@@ -93,6 +98,8 @@ public class HandGrip : MonoBehaviour
     {
         bool anyHandGripping = _isGripping || (_otherHand != null && _otherHand.IsGripping);
         _stamina.isResting = !anyHandGripping;
+        
+        UpdateHandColor();
 
         if (_isGripping)
         {
@@ -400,5 +407,13 @@ public class HandGrip : MonoBehaviour
         Vector3 mouseScreen = Input.mousePosition;
         mouseScreen.z = Mathf.Abs(_mainCamera.transform.position.z - transform.position.z);
         return _mainCamera.ScreenToWorldPoint(mouseScreen);
+    }
+    
+    void UpdateHandColor()
+    {
+        if (_handSpriteRenderer == null || _stamina == null) return;
+
+        Color target = Color.Lerp(_exhaustedHandColor, _restedHandColor, _stamina.StaminaFraction01);
+        _handSpriteRenderer.color = Color.Lerp(_handSpriteRenderer.color, target, _colorLerpSpeed * Time.deltaTime);
     }
 }
