@@ -806,8 +806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38a057c3939a844b9fe004035b16e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
-  maxStamina: 3
-  regenPerSecond: 0.5
+  maxStamina: 4.5
+  regenPerSecond: 0.7
   isResting: 1
   OnStaminaChanged:
     m_PersistentCalls:
@@ -998,8 +998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38a057c3939a844b9fe004035b16e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
-  maxStamina: 3
-  regenPerSecond: 0.5
+  maxStamina: 4.5
+  regenPerSecond: 0.7
   isResting: 1
   OnStaminaChanged:
     m_PersistentCalls:
