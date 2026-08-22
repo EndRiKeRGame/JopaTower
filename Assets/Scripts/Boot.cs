@@ -1,131 +1,154 @@
-﻿using DefaultNamespace.Ui;
+﻿using Configs;
+using DefaultNamespace;
+using GlobalSystems;
 using Player;
+using PrimeTween;
+using Ui;
 using UnityEngine;
 
-namespace DefaultNamespace
+public class Boot : MonoBehaviour
 {
-    public class Boot : MonoBehaviour
+    [SerializeField] private UiController _uiController;
+    [SerializeField] private PlayerCreator _playerCreator;
+        
+    [SerializeField]
+    private ActTowerGenerator _towerGenerator;
+        
+    [SerializeField]
+    private TowerConfig _towerConfig;
+        
+    [SerializeField]
+    private TowerConfig _backgroundTowerConfig;
+        
+    [SerializeField]
+    private DeathFloor _deathFloor;
+        
+    [SerializeField]
+    private CameraFollowUp _cameraFollowUp;
+        
+    [SerializeField]
+    private HealthSystem _healthSystem;
+        
+    [SerializeField]
+    private ProgressionSystem _progressionSystem;
+        
+    [SerializeField]
+    private ObstacleSpawner _obstacleSpawner;
+    
+    [SerializeField]
+    private BackgroundController _backgroundController;
+
+    [SerializeField]
+    private int _sectionsPerAct;
+        
+    private PlayerController _curPlayer;
+    private float[] _triggersPositions = new float[5];
+
+    private void Awake()
     {
-        [SerializeField]
-        private ActTowerGenerator _towerGenerator;
+        _uiController.OnStartButtonPressed += StartGame;
+        _uiController.OnPauseButtonPressed += PauseGame;
+        _uiController.OnContinueButtonPressed += ResumeGame;
+        _uiController.OnMainMenuButtonPressed += ResetGame;
+        _uiController.OnRestartButtonPressed += ResetGame;
+        _uiController.OnRestartButtonPressed += StartGame;
         
-        [SerializeField]
-        private TowerConfig _towerConfig;
-        
-        [SerializeField]
-        private TowerConfig _backgroundTowerConfig;
-        
-        [SerializeField]
-        private DeathFloor _deathFloor;
-        
-        [SerializeField]
-        private Transform _spawnPoint;
-        
-        [SerializeField]
-        private Player.Player _playerPrefab;
-        
-        [SerializeField]
-        private CameraFollowUp _cameraFollowUp;
-        
-        [SerializeField]
-        private Transform _markTransform;
-        
-        [SerializeField]
-        private LineRenderer _lineRenderer;
-
-        [SerializeField]
-        private PopUpAnimator _popUpAnimator;
-        
-        [SerializeField]
-        private MainMenuView _mainMenuView;
-        
-        [SerializeField]
-        private HealthSystem _healthSystem;
-        
-        [SerializeField]
-        private ProgressionSystem _progressionSystem;
-        
-        [SerializeField]
-        private DialogueView _dialogueView;
-        
-        [SerializeField]
-        private ComicsView _comicsView;
-        
-        [SerializeField]
-        private DialogueTextConfig _dialogueTextConfig;
-        
-        [SerializeField]
-        private ObstacleSpawner _obstacleSpawner;
-
-        [SerializeField]
-        private int _sectionsPerAct;
-        
-        private Player.Player _curPlayer;
-
-        private void Awake()
+        _healthSystem.OnDeath += () =>
         {
-            _cameraFollowUp.enabled = false;
-            _deathFloor.enabled = false;
+            var seq = Sequence.Create();
+            seq.ChainCallback(_curPlayer.StopPlayer);
+            seq.ChainDelay(3f);
+            seq.ChainCallback(PauseGame);
+            seq.ChainCallback(_uiController.ShowDeathScreen);
+            // TODO: звук смерти
+            seq.ChainCallback(_progressionSystem.Reset);
+        };
             
-            _mainMenuView.Init(_healthSystem);
-            
-            _mainMenuView.OnStartButtonPressed += StartGame;
-            _mainMenuView.OnRestartButtonPressed += RestartGame;
-            _healthSystem.OnDeath += _progressionSystem.Restart;
-            _healthSystem.OnDeath += StopGame;
-            _progressionSystem.OnFinaleDo += _mainMenuView.ShowFinale;
-            _progressionSystem.OnFinaleDo += StopGame;
-            _progressionSystem.Init(_deathFloor, _popUpAnimator, _dialogueTextConfig, _dialogueView, _comicsView, _obstacleSpawner);
-        }
-
-        public void StartGame()
-        {
-            _cameraFollowUp.enabled = true;
-            _deathFloor.enabled = true;
-
-            GenerateTower();
-            _curPlayer = Instantiate(_playerPrefab, _spawnPoint.position, Quaternion.identity);
-            _curPlayer.Setup(_markTransform, _lineRenderer);
-            
-            _cameraFollowUp.SetTarget(_curPlayer.transform);
-            _cameraFollowUp.ChangeCameraZoomTo(4f, 0.4f);
-            _cameraFollowUp.ChangeCameraZoomTo(7f, 600f);
-            
-            _deathFloor.Setup(_curPlayer.transform);
-            _deathFloor.StopDeathFloor();
-            
-            _progressionSystem.UpdateBodyProgression(_curPlayer.Progression);
-            _progressionSystem.Restart();
-            _healthSystem.UpdateBodyHealth(_curPlayer.Health);
-            _healthSystem.Restart();
-        }
-
-        public void RestartGame(bool isNeedToStart = true)
-        {
-            _towerGenerator.DestroyTower();
-            Destroy(_curPlayer.gameObject);
-            
-            _progressionSystem.Restart();
-            _healthSystem.Restart();
-            
-            _deathFloor.SetDeathFloor(new Vector3(0, -100f, 0));
-            
-            if (isNeedToStart)
-                StartGame();
-        }
-
-        public void StopGame()
-        {
-            _cameraFollowUp.enabled = false;
-            _deathFloor.enabled = false;
-            _curPlayer.GetComponent<PlayerMovementSystem>().IsMoveable = false;
-        }
+        _progressionSystem.OnComicsComplete += ResetGame;
+        _progressionSystem.OnComicsComplete += _uiController.ShowFinaleScreen;
         
-        public void GenerateTower()
-        {
-            _towerGenerator.GenerateFullTower(_towerConfig, 5f, _sectionsPerAct);
-        }
+        _progressionSystem.Init(PauseGame, ResumeGame);
         
-        // dialogue here
+        // высота 1 этажа = 5
+        var sectionHeight = 5f;
+        // позиция триггера = 1.9
+        var triggerOffset = 1.9f;
+        // количество уровней пролога (3)
+        var prologueLevels = _towerConfig.Prologue.poolA.Length;
+        // высота башни для акта
+        var actTowerHeight = sectionHeight * _sectionsPerAct;
+        
+        _triggersPositions[0] = triggerOffset;
+        _triggersPositions[1] = triggerOffset + prologueLevels * sectionHeight;
+        _triggersPositions[2] = _triggersPositions[1] + actTowerHeight;
+        _triggersPositions[3] = _triggersPositions[2] + actTowerHeight;
+        _triggersPositions[4] = _triggersPositions[3] + actTowerHeight;
+        
+        _backgroundController.Init(_triggersPositions[3], _triggersPositions[4]);
+        _obstacleSpawner.Init(_triggersPositions[3] - triggerOffset, _triggersPositions[2] - triggerOffset);
+    }
+
+    public void StartGame()
+    {
+        GenerateTower();
+        _curPlayer = _playerCreator.CreatePlayer();
+            
+        _cameraFollowUp.SetTarget(_curPlayer.transform);
+        _cameraFollowUp.ChangeCameraZoomTo(7f, 600f);
+        _cameraFollowUp.SetPosition(Vector3.up);
+        _cameraFollowUp.StartWork();
+            
+        _deathFloor.SetTarget(_curPlayer.transform);
+        _deathFloor.StopWork();
+            
+        _progressionSystem.UpdatePlayerController(_curPlayer);
+        _progressionSystem.Reset();
+            
+        _healthSystem.UpdateBodyHealth(_curPlayer.Health);
+        _healthSystem.Restart();
+        
+        _backgroundController.UpdatePlayer(_curPlayer);
+    }
+
+    public void ResetGame()
+    {
+        DestroyTower();
+        Destroy(_curPlayer.gameObject);
+            
+        _cameraFollowUp.StopWork();
+        _cameraFollowUp.ChangeCameraZoomToInstantly(4f);
+            
+        _deathFloor.StopWork();
+        _deathFloor.SetDeathFloor(new Vector3(0, -100f, 0));
+            
+        _obstacleSpawner.StopSpawning();
+            
+        _progressionSystem.Reset();
+        _healthSystem.Restart();
+        _backgroundController.StopFog();
+    }
+        
+    public void ResumeGame()
+    {
+        _cameraFollowUp.StartWork();
+        _deathFloor.StartWork();
+        _curPlayer.StartPlayer();
+    }
+
+    public void PauseGame()
+    {
+        _cameraFollowUp.StopWork();
+        _deathFloor.StopWork();
+        _curPlayer.StopPlayer();
+    }
+        
+    public void GenerateTower()
+    {
+        _towerGenerator.GenerateFullTower(_towerConfig, 5f, _sectionsPerAct);
+    }
+        
+    public void DestroyTower()
+    {
+        _towerGenerator.DestroyTower();
     }
 }

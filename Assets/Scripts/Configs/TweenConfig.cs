@@ -1,7 +1,7 @@
 ﻿using PrimeTween;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Configs
 {
     [CreateAssetMenu(fileName = "TweenConfig", menuName = "Configs/TweenConfig", order = 0)]
     public class TweenConfig : ScriptableObject

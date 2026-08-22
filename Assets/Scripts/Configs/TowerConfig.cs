@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Configs
 {
     [CreateAssetMenu(fileName = "TowerConfig", menuName = "Configs/TowerConfig", order = 0)]
     public class TowerConfig : ScriptableObject
@@ -29,36 +29,37 @@ namespace DefaultNamespace
     {
         public GameObject transitionStart;
         public GameObject[] poolA;
-        public GameObject[] poolB;
-        public GameObject transitionEnd;
 
         public GameObject[] GetSectionOrder(int num)
         {
             if (num < 2)
             {
-                Debug.Log("Количество cекций в акте не может быть меньше двух");
+                Debug.Log("Количество секций в акте не может быть меньше двух");
                 return null;
             }
-            
+
             GameObject[] sectionOrder = new GameObject[num];
             sectionOrder[0] = transitionStart;
-            sectionOrder[^1] = transitionEnd;
 
-            int half = num / 2;
-            if (poolA.Length < half || poolB.Length < half)
-            {
-                Debug.Log("poolA or poolB small for half");
-                return null;
-            }
-            
+            int remainingSlots = num - 1;
+
             ShuffleArray(poolA);
-            for (int i = 1, j = 0; i < half; i++, j++)
-                sectionOrder[i] = poolA[j];
-            
-            ShuffleArray(poolB);
-            for (int i = half, j = 0; i < num - 1; i++, j++)
-                sectionOrder[i] = poolB[j];
-            
+
+            int index = 1;
+
+            int uniqueCount = Mathf.Min(poolA.Length, remainingSlots);
+            for (int i = 0; i < uniqueCount; i++)
+            {
+                sectionOrder[index] = poolA[i];
+                index++;
+            }
+
+            while (index < num)
+            {
+                sectionOrder[index] = poolA[Random.Range(0, poolA.Length)];
+                index++;
+            }
+
             return sectionOrder;
         }
         

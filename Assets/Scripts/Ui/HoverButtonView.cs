@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace DefaultNamespace.Ui
+namespace Ui
 {
     public class HoverButtonView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {

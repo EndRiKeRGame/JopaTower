@@ -2,7 +2,7 @@
 using Enums;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Configs
 {
     [CreateAssetMenu(fileName = "DialogueTextConfig", menuName = "Configs/DialogueTextConfig", order = 0)]
     public class DialogueTextConfig : ScriptableObject

@@ -19,49 +19,48 @@ MonoBehaviour:
     - {fileID: 8819183825645748734, guid: 37a4893add964c74498bcce9ed01ea38, type: 3}
     - {fileID: 8819183825645748734, guid: ee5bce2bc13f94044bd9ea71cd2c3393, type: 3}
     - {fileID: 8819183825645748734, guid: 266c26c00cab78444b0066f471df2271, type: 3}
-    poolB: []
-    transitionEnd: {fileID: 8819183825645748734, guid: 266c26c00cab78444b0066f471df2271, type: 3}
   <Act1>k__BackingField:
     transitionStart: {fileID: 8819183825645748734, guid: 47016c50c5762534a810ef70d864fb1b, type: 3}
     poolA:
-    - {fileID: 2213844778860162548, guid: 00ab340226fdc0e4c908d0909687dfd6, type: 3}
-    - {fileID: 3552444684908328516, guid: 23287ee2459303f488dd20330ac2daab, type: 3}
+    - {fileID: 8467243105425521085, guid: 7d28dc759fa44b446b04bb9b9af7249c, type: 3}
+    - {fileID: 8467243105425521085, guid: c4ee2c525d26f1749a92abb5cb694e5e, type: 3}
     - {fileID: 7648636025979634673, guid: 9cebba3d654a6b044831855854d8bd7f, type: 3}
     - {fileID: 677307780266505756, guid: bbb0cc6deac6830438216960f5a8ec62, type: 3}
-    poolB:
-    - {fileID: 2080936012106908891, guid: f1c12e97b38fd5c48a25fab222a4a22a, type: 3}
-    - {fileID: 8467243105425521085, guid: 7d28dc759fa44b446b04bb9b9af7249c, type: 3}
     - {fileID: 3965872071278532932, guid: 8e0aea9b884dca14ab9d49c05bb3f736, type: 3}
+    - {fileID: 2080936012106908891, guid: f1c12e97b38fd5c48a25fab222a4a22a, type: 3}
+    - {fileID: 5875792891014901520, guid: 22943e2b97615cb408534476a593ef2a, type: 3}
+    - {fileID: 8467243105425521085, guid: 91ec623998f96ee48b95dca9215dfae4, type: 3}
+    - {fileID: 3552444684908328516, guid: 23287ee2459303f488dd20330ac2daab, type: 3}
+    - {fileID: 2213844778860162548, guid: 00ab340226fdc0e4c908d0909687dfd6, type: 3}
     - {fileID: 3729981873854335410, guid: 925d4ed43abc045439d7b913605fac13, type: 3}
-    transitionEnd: {fileID: 5875792891014901520, guid: 22943e2b97615cb408534476a593ef2a, type: 3}
   <Act2>k__BackingField:
     transitionStart: {fileID: 5200429820134777048, guid: 6b909319aadcc6b4d84af27f6e42415a, type: 3}
     poolA:
     - {fileID: 2942989102897833485, guid: 888828879ec517444828b1e312d851a8, type: 3}
-    - {fileID: 8934028961538544802, guid: 6b0267a44c3454e4a95c7e6b9ad154af, type: 3}
-    - {fileID: 6845863277117803514, guid: de0c681c3943e7840afb98c4b3cc79f5, type: 3}
-    - {fileID: 2645161035173062214, guid: 61f67561f42e81545a70f0b498bc1722, type: 3}
-    poolB:
-    - {fileID: 2725160202123044639, guid: 3967d6aaba6cfa54d84e11a22c5449aa, type: 3}
-    - {fileID: 5370472337626663191, guid: d10abaac32ab66a4eaec4f068f2f27dd, type: 3}
+    - {fileID: 8689618159636803907, guid: 21c86cdc058eb754a8ef8159c0a6c47e, type: 3}
     - {fileID: 6634250490458577609, guid: 73e109daf2132854aac5e7fd775d70c6, type: 3}
+    - {fileID: 8934028961538544802, guid: 6b0267a44c3454e4a95c7e6b9ad154af, type: 3}
+    - {fileID: 6634250490458577609, guid: 0dfbde2d125f44c4baef7db07bdd88a9, type: 3}
+    - {fileID: 2725160202123044639, guid: 3967d6aaba6cfa54d84e11a22c5449aa, type: 3}
     - {fileID: 8759473217316818480, guid: 8933dfcda385ea2459b1fe558f82f0aa, type: 3}
-    transitionEnd: {fileID: 8689618159636803907, guid: 21c86cdc058eb754a8ef8159c0a6c47e, type: 3}
+    - {fileID: 6845863277117803514, guid: de0c681c3943e7840afb98c4b3cc79f5, type: 3}
+    - {fileID: 5370472337626663191, guid: d10abaac32ab66a4eaec4f068f2f27dd, type: 3}
+    - {fileID: 6634250490458577609, guid: 85a7f4b4309410e4980d1c1c6527df4b, type: 3}
+    - {fileID: 2645161035173062214, guid: 61f67561f42e81545a70f0b498bc1722, type: 3}
   <Act3>k__BackingField:
     transitionStart: {fileID: 2813960386496704193, guid: 395bb92c50e35494cad7c9ab982ff6f5, type: 3}
     poolA:
     - {fileID: 8914397794978053759, guid: 0c2874cf67e3eab46a120d3dbb8f6b31, type: 3}
-    - {fileID: 9047390687398688950, guid: 415504b82d0f83c45aed80a2e2d10fc5, type: 3}
-    - {fileID: 7692536127562149214, guid: f404358a5a03f0c429086e5dcc5321c5, type: 3}
-    - {fileID: 6938205893932132780, guid: 07ff5bb91ebd94a40ad11a3a91f12c5b, type: 3}
-    poolB:
-    - {fileID: 5490747683207514440, guid: b6dd6db098eb9a2498b32bbd3413e356, type: 3}
     - {fileID: 3005837296606799803, guid: 30effc0309f6b7440a84f9ceec340f30, type: 3}
-    - {fileID: 1638366248756574270, guid: 34857d7d266305442b54ca36e2293c7e, type: 3}
     - {fileID: 5489737127547313666, guid: 8c9fd08eae0a15b47bc0c2c84204e889, type: 3}
-    transitionEnd: {fileID: 667485204907925971, guid: 67fd3502d062a6a45ac74289158e29b4, type: 3}
+    - {fileID: 667485204907925971, guid: 67fd3502d062a6a45ac74289158e29b4, type: 3}
+    - {fileID: 3005837296606799803, guid: c64a53c855c955646ab23c60a83b33e2, type: 3}
+    - {fileID: 9047390687398688950, guid: 415504b82d0f83c45aed80a2e2d10fc5, type: 3}
+    - {fileID: 6938205893932132780, guid: 07ff5bb91ebd94a40ad11a3a91f12c5b, type: 3}
+    - {fileID: 1638366248756574270, guid: 34857d7d266305442b54ca36e2293c7e, type: 3}
+    - {fileID: 8914397794978053759, guid: b66db50d181afb74a98c1e851f07ab2e, type: 3}
+    - {fileID: 5490747683207514440, guid: b6dd6db098eb9a2498b32bbd3413e356, type: 3}
+    - {fileID: 7692536127562149214, guid: f404358a5a03f0c429086e5dcc5321c5, type: 3}
   <Finale>k__BackingField:
     transitionStart: {fileID: 667485204907925971, guid: fdd740b952fc7004b8449ec39184b04f, type: 3}
     poolA: []
-    poolB: []
-    transitionEnd: {fileID: 0}

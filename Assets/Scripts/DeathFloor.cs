@@ -47,33 +47,14 @@ public class DeathFloor : MonoBehaviour
 
     private Tween _frontTweenX, _frontTweenY;
     private Tween _backTweenX, _backTweenY;
-
-   private void FixedUpdate()
-    {
-        if (!_isMoving)
-            return;
-
-        _speedUp = Math.Abs(_target.position.y - transform.position.y) > _distance;
-        float speed = _speedUp ? _speed * Time.fixedDeltaTime * _speedUpCoef : _speed * Time.fixedDeltaTime;
-
-        // Обновляем базовые позиции (движение вверх)
-        _frontBasePos += _frontDeathFloor.up * speed;
-        _backBasePos += _backDeathFloor.up * speed;
-
-        // Итоговая позиция = базовая + анимационные смещения по правой и верхней осям
-        _frontDeathFloor.position = _frontBasePos 
-                                    + _frontDeathFloor.right * _frontOffsetX 
-                                    + _frontDeathFloor.up * _frontOffsetY;
-        _backDeathFloor.position = _backBasePos 
-                                   + _backDeathFloor.right * _backOffsetX 
-                                   + _backDeathFloor.up * _backOffsetY;
-    }
-
-    public void Setup(Transform target) => _target = target;
     
-    public void StartDeathFloor()
+    public void SetTarget(Transform target) => _target = target;
+    
+    public void StartWork()
     {
-        if (_isMoving) return;
+        if (_isMoving)
+            return;
+        
         _isMoving = true;
 
         // Запоминаем текущие позиции как базовые
@@ -103,7 +84,7 @@ public class DeathFloor : MonoBehaviour
         }, cycles: -1);
     }
     
-    public void StopDeathFloor()
+    public void StopWork()
     {
         _isMoving = false;
         StopAllTweens();
@@ -112,10 +93,6 @@ public class DeathFloor : MonoBehaviour
     
     public void SetDeathFloor(Vector3 pos)
     {
-        _isMoving = false;
-        StopAllTweens();
-        ResetOffsets();
-
         _frontDeathFloor.position = pos;
         _backDeathFloor.position = pos + Vector3.up * 5f;
         _frontBasePos = _frontDeathFloor.position;
@@ -123,6 +100,27 @@ public class DeathFloor : MonoBehaviour
     }
     
     public Vector3 GetDeathFloorPos() => _frontDeathFloor.position;
+
+   private void FixedUpdate()
+    {
+        if (!_isMoving)
+            return;
+
+        _speedUp = Math.Abs(_target.position.y - transform.position.y) > _distance;
+        float speed = _speedUp ? _speed * Time.fixedDeltaTime * _speedUpCoef : _speed * Time.fixedDeltaTime;
+
+        // Обновляем базовые позиции (движение вверх)
+        _frontBasePos += _frontDeathFloor.up * speed;
+        _backBasePos += _backDeathFloor.up * speed;
+
+        // Итоговая позиция = базовая + анимационные смещения по правой и верхней осям
+        _frontDeathFloor.position = _frontBasePos 
+                                    + _frontDeathFloor.right * _frontOffsetX 
+                                    + _frontDeathFloor.up * _frontOffsetY;
+        _backDeathFloor.position = _backBasePos 
+                                   + _backDeathFloor.right * _backOffsetX 
+                                   + _backDeathFloor.up * _backOffsetY;
+    }
 
     private void StopAllTweens()
     {

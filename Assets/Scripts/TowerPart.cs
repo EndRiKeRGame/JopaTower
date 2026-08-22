@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+public class TowerPart : MonoBehaviour
 {
-    public class TowerPart : MonoBehaviour
-    {
         
-    }
 }

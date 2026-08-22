@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
+using PrimeTween;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.SceneManagement;
@@ -15,7 +16,7 @@ using UnityEngine.Rendering;
 using static UnityEngine.GUILayout;
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("PrimeTween.Internal")]
 
-namespace PrimeTween {
+namespace Plugins.PrimeTween.@internal {
     internal class PrimeTweenInstaller : ScriptableObject {
         [SerializeField] internal SceneAsset demoScene;
         [SerializeField] internal SceneAsset demoSceneUrp;

@@ -198,7 +198,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3169c9910c77dd945833ba84b94bdf44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FogDrift
-  _speed: 1.5
+  _speedX: 1.5
+  _speedY: 0.3
   _minX: -9
   _maxX: 9
+  _minY: -1
+  _maxY: 1
   _startMovingLeft: 1
+  _startMovingUp: 1
+  _baseY: 0

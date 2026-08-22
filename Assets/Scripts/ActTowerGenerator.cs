@@ -1,4 +1,4 @@
-using DefaultNamespace;
+using Configs;
 using UnityEngine;
 
 public class ActTowerGenerator : MonoBehaviour

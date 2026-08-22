@@ -1,11 +1,12 @@
 ﻿using System;
+using Configs;
 using Enums;
 using PrimeTween;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DefaultNamespace.Ui
+namespace Ui
 {
     public class DialogueView : MonoBehaviour
     {
@@ -76,6 +77,8 @@ namespace DefaultNamespace.Ui
                 EmoteEnum.Sad => _dialogueSpritesConfig.Sad,
                 EmoteEnum.Shock => _dialogueSpritesConfig.Shock,
                 EmoteEnum.Happy => _dialogueSpritesConfig.Happy,
+                EmoteEnum.Toilet => _dialogueSpritesConfig.Toilet,
+                EmoteEnum.Shards => _dialogueSpritesConfig.Shards,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

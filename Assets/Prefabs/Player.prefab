@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 6512521525456252032, guid: 4fe5c9a7c229a214cae77e71936202a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -2686981293428946090, guid: c77035ce44b5f454ca96d572e935203c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -5578162833387308892, guid: 2aaeb360adbe8ce4b9d83397e042cbc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -356,7 +356,7 @@ SpriteRenderer:
   m_SortingLayerID: -786482929
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 6916017083612350333, guid: 63222b2519adffb41bb8cc0265cb4ed3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -762,9 +762,9 @@ MonoBehaviour:
   _side: 0
   _mainCamera: {fileID: 0}
   _bodyRigidbody: {fileID: 7463869402011527185}
-  bodyMovement: {fileID: 0}
-  _stamina: {fileID: 6876213229405957967}
-  _otherHand: {fileID: 0}
+  playerBodyMovement: {fileID: 7095293004470782615}
+  playerStamina: {fileID: 6876213229405957967}
+  otherPlayerHand: {fileID: 311400998016245887}
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
@@ -773,6 +773,7 @@ MonoBehaviour:
   _twoHandLaunchForceMultiplier: 73
   _twoHandMaxLaunchDistance: 1
   _launchLockDuration: 0.4
+  _maxBodySpeed: 45
   _staminaDrainPerSecond: 1
   _staminaDrainUnderLoadMultiplier: 1.5
   _loadForceThreshold: 5
@@ -788,6 +789,11 @@ MonoBehaviour:
   _grabSprite: {fileID: 8932821772926214850, guid: 1be27b7d0e36dae4e944c3661c229256, type: 3}
   _grabMarker: {fileID: 0}
   _aimLine: {fileID: 0}
+  _arrowHead: {fileID: 0}
+  _stunnedHandColor: {r: 0, g: 0, b: 0, a: 1}
+  _restedHandColor: {r: 1, g: 1, b: 1, a: 1}
+  _exhaustedHandColor: {r: 1, g: 0.25, b: 0.25, a: 1}
+  _colorLerpSpeed: 6
 --- !u!114 &6876213229405957967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,9 +954,9 @@ MonoBehaviour:
   _side: 1
   _mainCamera: {fileID: 0}
   _bodyRigidbody: {fileID: 7463869402011527185}
-  bodyMovement: {fileID: 0}
-  _stamina: {fileID: 1161907973848307337}
-  _otherHand: {fileID: 0}
+  playerBodyMovement: {fileID: 7095293004470782615}
+  playerStamina: {fileID: 1161907973848307337}
+  otherPlayerHand: {fileID: 8395878423350462850}
   _jointFrequency: 4
   _jointDamping: 0.6
   _stepBetweenHands: 0.2
@@ -959,6 +965,7 @@ MonoBehaviour:
   _twoHandLaunchForceMultiplier: 73
   _twoHandMaxLaunchDistance: 1
   _launchLockDuration: 0.4
+  _maxBodySpeed: 45
   _staminaDrainPerSecond: 1
   _staminaDrainUnderLoadMultiplier: 1.5
   _loadForceThreshold: 5
@@ -974,6 +981,11 @@ MonoBehaviour:
   _grabSprite: {fileID: 5583619260172251410, guid: d738b0c5161356044819985bdd308552, type: 3}
   _grabMarker: {fileID: 0}
   _aimLine: {fileID: 0}
+  _arrowHead: {fileID: 0}
+  _stunnedHandColor: {r: 0, g: 0, b: 0, a: 1}
+  _restedHandColor: {r: 1, g: 1, b: 1, a: 1}
+  _exhaustedHandColor: {r: 1, g: 0.25, b: 0.25, a: 1}
+  _colorLerpSpeed: 6
 --- !u!114 &1161907973848307337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1005,8 +1017,9 @@ GameObject:
   - component: {fileID: 8934724874644116818}
   - component: {fileID: 7095293004470782615}
   - component: {fileID: 1857161092573330277}
-  - component: {fileID: 7301060135594526847}
   - component: {fileID: 2777743197346906990}
+  - component: {fileID: 7423241466949483318}
+  - component: {fileID: 4407903697072751712}
   - component: {fileID: 7463869402011527185}
   - component: {fileID: 9221682746405371437}
   - component: {fileID: 1771881597119564902}
@@ -1047,15 +1060,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed766db0e254aa5a61d1ad90005a883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.Player
-  _bodyHealth: {fileID: 1857161092573330277}
-  _bodyProgression: {fileID: 2777743197346906990}
-  _left: {fileID: 8395878423350462850}
-  _right: {fileID: 311400998016245887}
-  _audioSource: {fileID: 5692471873908962795}
-  _audioGenerators:
-  - {fileID: 8300000, guid: 0b1ece17d9a1c364aae1fe8a8b13e5a2, type: 3}
-  - {fileID: 8300000, guid: 33b2acced663dfe439659629cb49c0d7, type: 3}
-  _forceDown: 10
+  _playerHealth: {fileID: 1857161092573330277}
+  _playerProgression: {fileID: 2777743197346906990}
+  _playerInput: {fileID: 8934724874644116818}
+  _playerSoundsController: {fileID: 4407903697072751712}
+  _playerHitController: {fileID: 7423241466949483318}
 --- !u!114 &8934724874644116818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,10 +1077,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8f7ee8bda140d199f5e9848bd3c917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementSystem
-  _body: {fileID: 7095293004470782615}
-  _leftHand: {fileID: 8395878423350462850}
-  _rightHand: {fileID: 311400998016245887}
-  IsMoveable: 1
+  _playerBody: {fileID: 7095293004470782615}
+  _leftPlayerHand: {fileID: 8395878423350462850}
+  _rightPlayerHand: {fileID: 311400998016245887}
+  _playerBodyRigidBodies:
+  - {fileID: 3309800423735658756}
+  - {fileID: 4202836297183847320}
+  - {fileID: 7463869402011527185}
+  - {fileID: 5311753004880922003}
+  - {fileID: 726421793561188618}
 --- !u!114 &7095293004470782615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,9 +1099,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _moveSpeed: 7
-  _groundAcceleration: 30
+  _groundAcceleration: 50
   _groundDeceleration: 30
-  _airAccelerationCoef: 0.25
+  _airAccelerationCoef: 0.4
 --- !u!114 &1857161092573330277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,19 +1114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b853a0ccb6cd441ba89afb7d273ec57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.BodyHealth
---- !u!114 &7301060135594526847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9112118292914906353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b79144c7664801a2d066400e7010b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player.ProgressionSystem
-  _deathFloorStep: 20
 --- !u!114 &2777743197346906990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,6 +1126,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa75952e65bd4324bc476d3cdfc095ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.BodyProgression
+--- !u!114 &7423241466949483318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112118292914906353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf328bcd2eea4d1a97080efa6cfa42c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerHitController
+  _knockbackDownForce: 3
+  _stunDuration: 0.3
+--- !u!114 &4407903697072751712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112118292914906353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000ffa68a2f846a49386297dfd050472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerSoundsController
+  _audioSource: {fileID: 5692471873908962795}
+  _audioGenerators:
+  - {fileID: 8300000, guid: 0b1ece17d9a1c364aae1fe8a8b13e5a2, type: 3}
+  - {fileID: 8300000, guid: 33b2acced663dfe439659629cb49c0d7, type: 3}
 --- !u!50 &7463869402011527185
 Rigidbody2D:
   serializedVersion: 5

@@ -10,24 +10,49 @@ public class CameraFollowUp : MonoBehaviour
     [SerializeField]
     public Camera _camera;
     
-    public Transform target;
+    [SerializeField]
     public float smoothTime = 0.25f;
-
-    private Vector3 _velocity;
     
-    void LateUpdate()
-    {
-        Vector3 targetPos = new Vector3(transform.position.x, target.position.y, transform.position.z);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref _velocity, smoothTime);
-    }
+    private Transform _target;
+    private Vector3 _velocity;
+    private bool _isFollowing = false;
 
+    public void StartWork()
+    {
+        _isFollowing = true;
+    }
+    
+    public void StopWork()
+    {
+        _isFollowing = false;
+    }
+    
     public void SetTarget(Transform newTarget)
     {
-        target = newTarget;
+        _target = newTarget;
     }
 
-    public void ChangeCameraZoomTo(float val, float animDur = 0.3f)
+    public void ChangeCameraZoomTo(float val, float animDur)
     {
         Tween.CameraOrthographicSize(_camera, val, animDur);
+    }
+    
+    public void SetPosition(Vector3 pos)
+    {
+        transform.position = pos;
+    }
+    
+    public void ChangeCameraZoomToInstantly(float val)
+    {
+        _camera.orthographicSize = val;
+    }
+    
+    private void LateUpdate()
+    {
+        if (!_isFollowing)
+            return;
+        
+        Vector3 targetPos = new Vector3(transform.position.x, _target.position.y, transform.position.z);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref _velocity, smoothTime);
     }
 }

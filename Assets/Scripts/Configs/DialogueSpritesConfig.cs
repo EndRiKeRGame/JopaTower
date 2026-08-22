@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace
+namespace Configs
 {
     [CreateAssetMenu(fileName = "DialogueSpritesConfig", menuName = "Configs/DialogueSpritesConfig", order = 0)]
     public class DialogueSpritesConfig : ScriptableObject
@@ -16,6 +16,12 @@ namespace DefaultNamespace
         
         [field: SerializeField]
         public Sprite Happy { get; set; }
+        
+        [field: SerializeField]
+        public Sprite Toilet { get; set; }
+        
+        [field: SerializeField]
+        public Sprite Shards { get; set; }
     }
 }
 

@@ -16,3 +16,5 @@ MonoBehaviour:
   <Shock>k__BackingField: {fileID: 21300000, guid: 05f80fe31005fdf40a7c19927e7011d6, type: 3}
   <Sad>k__BackingField: {fileID: 21300000, guid: 7da6eff376109e643802b981f9643fd8, type: 3}
   <Happy>k__BackingField: {fileID: 21300000, guid: 9aa11996660e35c4db71369df277f82c, type: 3}
+  <Toilet>k__BackingField: {fileID: 21300000, guid: 957fcac4afa4d1d4b9bb0bbe08dc4469, type: 3}
+  <Shards>k__BackingField: {fileID: -327293409444333347, guid: 22f3b72e7be893943917a1e183e020d2, type: 3}
