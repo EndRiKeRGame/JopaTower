@@ -806,8 +806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38a057c3939a844b9fe004035b16e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
-  maxStamina: 5
-  regenPerSecond: 1
+  maxStamina: 3
+  regenPerSecond: 0.5
   isResting: 1
   OnStaminaChanged:
     m_PersistentCalls:
@@ -998,8 +998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d38a057c3939a844b9fe004035b16e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaminaSystem
-  maxStamina: 5
-  regenPerSecond: 1
+  maxStamina: 3
+  regenPerSecond: 0.5
   isResting: 1
   OnStaminaChanged:
     m_PersistentCalls:
@@ -1099,9 +1099,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _moveSpeed: 7
-  _groundAcceleration: 50
+  _groundAcceleration: 35
   _groundDeceleration: 30
-  _airAccelerationCoef: 0.4
+  _airAccelerationCoef: 0.37
 --- !u!114 &1857161092573330277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1293,7 +1293,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.506
   m_Pitch: 1
   Loop: 0
   Mute: 0

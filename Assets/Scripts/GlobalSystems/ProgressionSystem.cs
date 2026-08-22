@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Configs;
 using DefaultNamespace;
 using Enums;
@@ -23,6 +24,9 @@ namespace GlobalSystems
         [SerializeField] private DialogueTextConfig _dialogueText;
         [SerializeField] private float _deathFloorStep = 20f;
         [SerializeField] private BackgroundController _backgroundController;
+        
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _audioClip;
 
         private PlayerController _playerController;
 
@@ -105,7 +109,16 @@ namespace GlobalSystems
                 
                 StartGame();
                 _deathFloor.StopWork();
-            });
+            },
+            new Dictionary<int, Action>
+            {
+                // звук поломки толчка 3
+                {3, () =>
+                {
+                    _audioSource.PlayOneShot(_audioClip);
+                }}
+            }
+            );
         }
         
         private void OnAct1()
@@ -123,7 +136,16 @@ namespace GlobalSystems
                 _popUpAnimator.StartAnimation("Тюрьма");
                 
                 StartGame();
-            });
+            },
+            new Dictionary<int, Action>
+            {
+                // звук поломки толчка 1
+                {1, () =>
+                {
+                    _audioSource.PlayOneShot(_audioClip);
+                }}
+            }
+            );
         }
         
         private void OnAct2()
@@ -142,7 +164,14 @@ namespace GlobalSystems
                 _obstacleSpawner.StartSpawning();
                 
                 StartGame();
-            });
+            },
+            new Dictionary<int, Action> { {2, () =>
+            {
+                var mainCamera = Camera.main;
+                Tween.ShakeLocalPosition(mainCamera.transform, 
+                    new Vector3(0.33f, 0.33f, 0f), 
+                    0.4f);
+            }}});
         }
         
         private void OnAct3()
@@ -194,21 +223,6 @@ namespace GlobalSystems
             var curPos = _deathFloor.GetDeathFloorPos();
             curPos.y = _playerController.transform.position.y - _deathFloorStep;
             _deathFloor.SetDeathFloor(curPos);
-        }
-        
-        private void StartDeathFloor()
-        {
-            _deathFloor.StartWork();
-        }
-        
-        private void StartPlayer()
-        {
-            _playerController.StartPlayer();
-        }
-
-        private void StopPlayer()
-        {
-            _playerController.StopPlayer();
         }
     }
 }

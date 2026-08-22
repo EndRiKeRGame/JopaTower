@@ -8,8 +8,11 @@ using UnityEngine;
 
 public class Boot : MonoBehaviour
 {
-    [SerializeField] private UiController _uiController;
-    [SerializeField] private PlayerCreator _playerCreator;
+    [SerializeField]
+    private UiController _uiController;
+    
+    [SerializeField]
+    private PlayerCreator _playerCreator;
         
     [SerializeField]
     private ActTowerGenerator _towerGenerator;
@@ -39,6 +42,9 @@ public class Boot : MonoBehaviour
     private BackgroundController _backgroundController;
 
     [SerializeField]
+    private DeathZoneHeartbeat _deathZoneHeartbeat;
+
+    [SerializeField]
     private int _sectionsPerAct;
         
     private PlayerController _curPlayer;
@@ -57,10 +63,10 @@ public class Boot : MonoBehaviour
         {
             var seq = Sequence.Create();
             seq.ChainCallback(_curPlayer.StopPlayer);
-            seq.ChainDelay(3f);
+            seq.ChainDelay(1.5f);
+            seq.ChainCallback(_deathZoneHeartbeat.StopHeartbeat);
             seq.ChainCallback(PauseGame);
             seq.ChainCallback(_uiController.ShowDeathScreen);
-            // TODO: звук смерти
             seq.ChainCallback(_progressionSystem.Reset);
         };
             
@@ -108,6 +114,7 @@ public class Boot : MonoBehaviour
         _healthSystem.Restart();
         
         _backgroundController.UpdatePlayer(_curPlayer);
+        _deathZoneHeartbeat.Init(_curPlayer, _deathFloor);
     }
 
     public void ResetGame()

@@ -9,6 +9,8 @@ public class DeathFloor : MonoBehaviour
     
     [SerializeField]
     private Transform _backDeathFloor;
+
+    public Transform Counter;
     
     [SerializeField]
     private Transform _target;

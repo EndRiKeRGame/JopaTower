@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Configs;
 using Enums;
 using PrimeTween;
@@ -20,6 +21,9 @@ namespace Ui
         private int _currentIndex;
         private Action _onDialogueComplete;
 
+        // Действия, которые нужно выполнить при показе реплики с определённым индексом
+        private Dictionary<int, Action> _positionActions = new Dictionary<int, Action>();
+
         private void Awake()
         {
             _skipButton.onClick.AddListener(ShowNextDialogue);
@@ -28,28 +32,29 @@ namespace Ui
             _dialogueCG.interactable = false;
             _dialogueCG.blocksRaycasts = false;
         }
-
-        public void ShowDialogue(FullDialogueAsset asset, Action onComplete = null)
+        
+        public void ShowDialogue(FullDialogueAsset asset, Action onComplete = null,
+            Dictionary<int, Action> positionActions = null)
         {
             _currentDialogue = asset;
-            _currentIndex = 0;
             _onDialogueComplete = onComplete;
+            _positionActions = positionActions ?? new Dictionary<int, Action>();
 
             Tween.Alpha(_dialogueCG, 1f, 0.2f);
             _dialogueCG.interactable = true;
             _dialogueCG.blocksRaycasts = true;
 
-            UpdateDialogue(_currentDialogue.Dialogue[_currentIndex]);
+            GoToIndex(0);
         }
 
         private void ShowNextDialogue()
         {
             if (_currentDialogue == null) return;
 
-            _currentIndex++;
-            if (_currentIndex < _currentDialogue.Dialogue.Length)
+            int nextIndex = _currentIndex + 1;
+            if (nextIndex < _currentDialogue.Dialogue.Length)
             {
-                UpdateDialogue(_currentDialogue.Dialogue[_currentIndex]);
+                GoToIndex(nextIndex);
             }
             else
             {
@@ -58,7 +63,17 @@ namespace Ui
 
                 _onDialogueComplete = null;
                 _currentDialogue = null;
+                _positionActions.Clear();
             }
+        }
+
+        private void GoToIndex(int index)
+        {
+            _currentIndex = index;
+            UpdateDialogue(_currentDialogue.Dialogue[_currentIndex]);
+
+            if (_positionActions.TryGetValue(_currentIndex, out Action action))
+                action?.Invoke();
         }
 
         private void HideDialogue()

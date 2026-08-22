@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Player
 {
@@ -26,7 +27,7 @@ namespace Player
             _playerSoundsController ??= GetComponent<PlayerSoundsController>();
             _playerHitController ??= GetComponent<PlayerHitController>();
         }
-
+        
         public void Setup(Transform grabMarker, LineRenderer aimLine)
         {
             _playerInput.LeftHandGrip.Setup(grabMarker, aimLine);
